@@ -16,7 +16,9 @@
   "author": "Santosh Phaiju",
   "license": "ISC",
   "devDependencies": {
+    "@types/dotenv": "^8.2.0",
     "@types/express": "^5.0.0",
+    "@types/mongoose": "^5.11.97",
     "@types/node": "^22.7.5",
     "concurrently": "^9.0.1",
     "nodemon": "^3.1.7",
@@ -25,6 +27,9 @@
     "typescript": "^5.6.3"
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "mongoose": "^8.7.1",
     "typescript-eslint": "^8.8.1"
   }
 }
