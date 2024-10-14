@@ -1,13 +1,15 @@
+interface ErrorsArr {}
+
 class ApiError extends Error {
     public statusCode: number;
     public data: any;
     public success: boolean;
-    public errors: any[];
+    public errors: ErrorsArr[];
 
     constructor(
         statusCode: number = 500,
         message: string = 'Something went wrong',
-        errors: any[] = [],
+        errors: ErrorsArr[] = [],
         stack: string = ''
     ) {
         super(message);
