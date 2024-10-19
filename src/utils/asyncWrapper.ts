@@ -7,7 +7,7 @@ const asyncWrapper = (
         next: NextFunction
     ) => Promise<void>
 ) => {
-    (req: Request, res: Response, next: NextFunction) => {
+    return (req: Request, res: Response, next: NextFunction) => {
         Promise.resolve(requestHandler(req, res, next)).catch((error) => {
             next(error);
         });
