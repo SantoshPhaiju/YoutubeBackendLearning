@@ -3,7 +3,7 @@ import fs from 'fs';
 import { appConfig } from '../config/config';
 
 cloudinary.config({
-    cloud_name: 'dozo84nle',
+    cloud_name: appConfig.cloudinaryCloudName,
     api_key: appConfig.cloudinaryApiKey,
     api_secret: appConfig.cloudinaryApiSecret,
 });
@@ -20,6 +20,7 @@ const uploadOnCloudinary = async (
             {
                 resource_type: 'auto',
             }
+            // ! This is a callback function, it can either be used or cannot be used
             // (error, result) => {
             //     if (error) {
             //         console.log(error);
