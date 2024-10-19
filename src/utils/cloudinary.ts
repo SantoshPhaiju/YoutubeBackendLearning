@@ -8,7 +8,7 @@ cloudinary.config({
     api_secret: appConfig.cloudinaryApiSecret,
 });
 
-const uploadOnCloudinary = async (
+export const uploadOnCloudinary = async (
     localFilepath: string
 ): Promise<string | null> => {
     try {
