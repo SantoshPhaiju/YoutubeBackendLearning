@@ -35,10 +35,11 @@ export const uploadOnCloudinary = async (
 
         // file has been uploaded successfully
         console.log('File uploaded successfully on cloudinary', response.url);
+        fs.unlinkSync(localFilepath); // remove the file from the server after uploading on cloudinary
         return response.url;
     } catch (error) {
         fs.unlinkSync(localFilepath); // remove the file from the server if it fails to upload on cloudinary
-        console.log(error);
+        console.log('cloudinaryerror', error);
         return null;
     }
 };

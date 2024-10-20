@@ -1,9 +1,12 @@
 import dotenv from 'dotenv';
+
+dotenv.config({
+    path: './.env',
+});
+
 import app from './app';
 import { appConfig } from './config/config';
 import connectToDb from './db/db';
-
-dotenv.config();
 
 const port = appConfig.port || 8080;
 
