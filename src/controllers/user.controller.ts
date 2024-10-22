@@ -1,28 +1,14 @@
 import { Request, Response } from 'express';
-import { validationResult } from 'express-validator';
 import { User } from '../models/user.model';
 import { ApiError } from '../utils/ApiError';
+import { ApiResponse } from '../utils/ApiResponse';
 import asyncWrapper from '../utils/asyncWrapper';
 import { uploadOnCloudinary } from '../utils/cloudinary';
-import { ApiResponse } from '../utils/ApiResponse';
 
 export const registerUser = asyncWrapper(
     async (req: Request, res: Response) => {
         // * Getting all the data from the request body from frontend
-        const { username, fullname, email, password } = req.body
-
-        // * validating the data from the request body
-        const validation = validationResult(req);
-        console.log(validation);
-
-        if (
-            [fullname, email, username, password].some((field) => {
-                return field?.trim() === '';
-            })
-        ) {
-            let error = new ApiError(400, 'All fields are required');
-            throw error;
-        }
+        const { username, fullname, email, password } = req.body;
 
         // * Checking if the user already exists
         const existedUser = await User.findOne({
@@ -85,12 +71,15 @@ export const registerUser = asyncWrapper(
 
         // * check for user creation
         if (!createdUser) {
-            throw new ApiError(500, 'Something went wrong while registering user');
+            throw new ApiError(
+                500,
+                'Something went wrong while registering user'
+            );
         }
 
         // * Returning the reponse to the user
         res.status(201).json(
-            new ApiResponse(201, 'User registered successfully', createdUser, true)
+            new ApiResponse(201, 'User registered successfully', createdUser)
         );
     }
 );

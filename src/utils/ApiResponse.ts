@@ -8,12 +8,11 @@ class ApiResponse {
         statusCode: number,
         message: string = 'Success',
         data: any,
-        success: boolean
     ) {
+        this.success = statusCode < 400;
         this.statusCode = statusCode;
         this.message = message;
         this.data = data;
-        this.success = statusCode < 400;
     }
 }
 
