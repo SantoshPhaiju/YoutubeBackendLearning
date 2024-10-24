@@ -1,9 +1,34 @@
-import { Request, Response } from 'express';
+import { CookieOptions, Request, Response } from 'express';
 import { User } from '../models/user.model';
 import { ApiError } from '../utils/ApiError';
 import { ApiResponse } from '../utils/ApiResponse';
 import asyncWrapper from '../utils/asyncWrapper';
 import { uploadOnCloudinary } from '../utils/cloudinary';
+
+const generateAccessAndRefreshToken = async (
+    userId: string
+): Promise<{
+    accessToken: string;
+    refreshToken: string;
+}> => {
+    try {
+        const user = await User.findById(userId);
+        const accessToken = user.generateAccessToken();
+        const refreshToken = user.generateRefreshToken();
+
+        user.refreshToken = refreshToken;
+        await user.save({
+            validateBeforeSave: false,
+        });
+
+        return {
+            accessToken,
+            refreshToken,
+        };
+    } catch (error) {
+        throw new ApiError(500, 'Something went wrong while generating tokens');
+    }
+};
 
 export const registerUser = asyncWrapper(
     async (req: Request, res: Response) => {
@@ -83,3 +108,86 @@ export const registerUser = asyncWrapper(
         );
     }
 );
+
+export const loginUser = asyncWrapper(async (req: Request, res: Response) => {
+    // * Getting all the data from the request body from frontend
+    // * getting username or email and password from req.body
+    // * Checking if the user exists
+    // * Checking if the password is correct
+    // * Generating the access token
+    // * Generating the refresh token
+    // * Saving the refresh token to the database
+    // * Sending the response to the user
+
+    const { username, email, password } = req.body;
+
+    let user;
+
+    if (!password) {
+        throw new ApiError(400, 'Password is required');
+    }
+
+    if (username || email) {
+        user = await User.findOne({
+            $or: [{ username }, { email }],
+        });
+    } else {
+        throw new ApiError(400, 'Username or email is required');
+    }
+
+    if (!user) {
+        throw new ApiError(404, "User doesn't exists");
+    }
+
+    const comparePassword = await user.comparePassword(password);
+
+    if (!comparePassword) {
+        throw new ApiError(400, 'Invalid User Credentials');
+    }
+
+    const { accessToken, refreshToken } = await generateAccessAndRefreshToken(
+        user._id
+    );
+    const loggedInUser = await User.findById(user._id).select(
+        '-password -refreshToken'
+    );
+
+    const options = {
+        httpOnly: true,
+        secure: true,
+    };
+
+    res.status(200)
+        .cookie('accessToken', accessToken, options)
+        .cookie('refreshToken', refreshToken, options)
+        .json(
+            new ApiResponse(200, 'User logged in successfully', {
+                accessToken: accessToken,
+                refreshToken: refreshToken,
+                user: loggedInUser,
+            })
+        );
+});
+
+export const logoutUser = asyncWrapper(async (req: Request, res: Response) => {
+    const _id = req.user._id;
+    const user = await User.findByIdAndUpdate(
+        _id,
+        {
+            $set: { refreshToken: '' },
+        },
+        {
+            new: true,
+        }
+    );
+
+    const options: CookieOptions = {
+        httpOnly: true,
+        secure: true,
+    };
+
+    res.status(200)
+        .clearCookie('accessToken', options)
+        .clearCookie('refreshToken', options)
+        .json(new ApiResponse(200, 'User logged out successfully', null));
+});
