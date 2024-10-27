@@ -1,7 +1,9 @@
 import { Router } from 'express';
 import {
+    getUser,
     loginUser,
     logoutUser,
+    refreshAccessToken,
     registerUser,
 } from '../controllers/user.controller';
 import verifyJWT from '../middlewares/auth.middleware';
@@ -25,5 +27,9 @@ router.route('/login').post(loginUser);
 
 // protected routes
 router.route('/logout').post(verifyJWT, logoutUser);
+
+router.route('/me').get(verifyJWT, getUser);
+
+router.route('/refresh-access-token').post(refreshAccessToken);
 
 export default router;
