@@ -195,20 +195,22 @@ export const logoutUser = asyncWrapper(async (req: Request, res: Response) => {
 });
 
 export const getUser = asyncWrapper(async (req: Request, res: Response) => {
-    const _id = req.user._id;
-    const user = await User.findById(_id).select('-password -refreshToken');
+    // const _id = req.user._id;
+    // const user = await User.findById(_id).select('-password -refreshToken');
 
-    if (!user) {
-        throw new ApiError(404, 'User not found');
-    }
+    // if (!user) {
+    //     throw new ApiError(404, 'User not found');
+    // }
 
-    res.status(200).json(new ApiResponse(200, 'Here is the user data', user));
+    res.status(200).json(
+        new ApiResponse(200, 'Current User fetched successfully!', req.user)
+    );
 });
 
 export const refreshAccessToken = asyncWrapper(
     async (req: Request, res: Response) => {
         const { refreshToken } = req.cookies || req.body;
-        console.log("req.bod", req.body, req.cookies, refreshToken);
+        console.log('req.bod', req.body, req.cookies, refreshToken);
 
         if (!refreshToken) {
             throw new ApiError(400, 'Refresh token is required');
@@ -222,7 +224,7 @@ export const refreshAccessToken = asyncWrapper(
             const { id } = decodedToken as { id: string };
             console.log(decodedToken);
             const user = await User.findById(id);
-            console.log("user", user);
+            console.log('user', user);
 
             if (!user) {
                 throw new ApiError(404, 'Invalid refresh token');
@@ -256,3 +258,57 @@ export const refreshAccessToken = asyncWrapper(
         }
     }
 );
+
+export const changeCurrentPassword = asyncWrapper(
+    async (req: Request, res: Response) => {
+        const { oldPassword, newPassword } = req.body;
+        const { _id } = req.user;
+
+        if (!oldPassword || !newPassword) {
+            throw new ApiError(
+                400,
+                'Old password and new password is required'
+            );
+        }
+
+        const user = await User.findById(_id);
+        const checkPassword = await user.comparePassword(oldPassword);
+
+        if (!checkPassword) {
+            throw new ApiError(400, 'Invalid old password');
+        }
+
+        user.password = newPassword;
+        await user.save({ validateBeforeSave: false });
+
+        res.status(200).json(
+            new ApiResponse(200, 'Password changed successfully', null)
+        );
+    }
+);
+
+export const updateUser = asyncWrapper(async (req: Request, res: Response) => {
+    const { _id } = req.user;
+    const { fullname, email } = req.body;
+
+    if (!fullname || !email) {
+        throw new ApiError(400, 'Fullname and email is required');
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(
+        _id,
+        {
+            $set: {
+                fullname,
+                email,
+            },
+        },
+        {
+            new: true,
+        }
+    ).select("-password -refreshToken");
+
+    res.status(200).json(
+        new ApiResponse(200, 'User updated successfully', updatedUser)
+    );
+});

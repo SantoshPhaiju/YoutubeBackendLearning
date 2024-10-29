@@ -5,6 +5,7 @@ import {
     logoutUser,
     refreshAccessToken,
     registerUser,
+    updateUser,
 } from '../controllers/user.controller';
 import verifyJWT from '../middlewares/auth.middleware';
 import { handleValidationErrors } from '../middlewares/handleValidationErrors';
@@ -31,5 +32,7 @@ router.route('/logout').post(verifyJWT, logoutUser);
 router.route('/me').get(verifyJWT, getUser);
 
 router.route('/refresh-access-token').post(refreshAccessToken);
+
+router.route('/update-details').patch(verifyJWT, updateUser);
 
 export default router;
