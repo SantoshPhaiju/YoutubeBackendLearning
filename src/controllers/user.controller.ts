@@ -268,7 +268,7 @@ export const changeCurrentPassword = asyncWrapper(
         if (!oldPassword || !newPassword) {
             throw new ApiError(
                 400,
-                'Old password and new password is required'
+                'Old password and new password are required!'
             );
         }
 
@@ -290,10 +290,10 @@ export const changeCurrentPassword = asyncWrapper(
 
 export const updateUser = asyncWrapper(async (req: Request, res: Response) => {
     const { _id } = req.user;
-    const { fullname, email } = req.body;
+    const { fullname } = req.body;
 
-    if (!fullname || !email) {
-        throw new ApiError(400, 'Fullname and email is required');
+    if (!fullname) {
+        throw new ApiError(400, 'Fullname is required');
     }
 
     const updatedUser = await User.findByIdAndUpdate(
@@ -301,7 +301,6 @@ export const updateUser = asyncWrapper(async (req: Request, res: Response) => {
         {
             $set: {
                 fullname,
-                email,
             },
         },
         {
@@ -359,7 +358,6 @@ export const updateUserAvatar = asyncWrapper(
         );
     }
 );
-
 
 export const updateCoverImage = asyncWrapper(
     async (req: Request, res: Response) => {
