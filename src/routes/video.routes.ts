@@ -1,10 +1,10 @@
 import { Router } from 'express';
 import verifyJWT from '../middlewares/auth.middleware';
-import { subscribeChannel } from '../controllers/subscription.controller';
 import { upload } from '../middlewares/multer.middleware';
+import { uploadVideo } from '../controllers/video.controller';
 
 const router = Router();
 
-router.route('/uploadVideo').post(upload.single("video"), verifyJWT, subscribeChannel);
+router.route('/upload-video').post(upload.single('video'), verifyJWT, uploadVideo);
 
 export default router;
