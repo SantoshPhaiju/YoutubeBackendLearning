@@ -34,9 +34,11 @@ app.get('/', (req, res) => {
 // routes import
 import { errorHandlerMiddleware } from './middlewares/errorHandler.middleware';
 import userRouter from './routes/user.routes';
+import subscriptionRouter from './routes/subscription.routes';
 
 // routes declaration
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/subscriptions', subscriptionRouter);
 
 app.use(errorHandlerMiddleware);
 

@@ -178,7 +178,10 @@ export const logoutUser = asyncWrapper(async (req: Request, res: Response) => {
     await User.findByIdAndUpdate(
         _id,
         {
-            $set: { refreshToken: '' },
+            // $set: { refreshToken: '' },
+            $unset: {
+                refreshToken: 1,
+            }
         },
         {
             new: true,
