@@ -1,5 +1,6 @@
 import { CookieOptions, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
+import mongoose from 'mongoose';
 import { appConfig } from '../config/config';
 import { User } from '../models/user.model';
 import { ApiError } from '../utils/ApiError';
@@ -477,6 +478,63 @@ export const getUserChannelProfile = asyncWrapper(
                 200,
                 'Channel data fetched successfully',
                 channelData[0]
+            )
+        );
+    }
+);
+
+export const getWatchHistoryOfUser = asyncWrapper(
+    async (req: Request, res: Response) => {
+        const user = await User.aggregate([
+            {
+                $match: {
+                    _id: new mongoose.Types.ObjectId(req.user._id),
+                },
+            },
+            {
+                $lookup: {
+                    from: 'videos',
+                    localField: 'watchHistory',
+                    foreignField: '_id',
+                    as: 'watchHistory',
+                    pipeline: [
+                        {
+                            $lookup: {
+                                from: 'users',
+                                localField: 'owner',
+                                foreignField: '_id',
+                                as: 'videoOwner',
+                                pipeline: [
+                                    {
+                                        $project: {
+                                            fullname: 1,
+                                            username: 1,
+                                            avatar: 1,
+                                        }
+                                    }
+                                ]
+                            },
+                        },
+                        {
+                            $addFields: {
+                                // videoOwner: { $first : "$videoOwner" }
+                                videoOwner: { $arrayElemAt: ["$videoOwner", 0] }
+                            }
+                        }
+                    ],
+                },
+            },
+        ]);
+
+        if (!user?.length) {
+            throw new ApiError(404, 'Watch history not found');
+        }
+
+        res.status(200).json(
+            new ApiResponse(
+                200,
+                'Watch history fetched successfully',
+                user[0].watchHistory
             )
         );
     }
