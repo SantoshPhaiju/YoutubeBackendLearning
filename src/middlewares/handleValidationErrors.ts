@@ -9,7 +9,27 @@ export const handleValidationErrors = (
     next: NextFunction
 ): void => {
     const errors = validationResult(req);
-    
+
+    if (req.file) {
+        const file = req.file as Express.Multer.File;
+        const filePath = path.join(
+            __dirname,
+            '../',
+            '../',
+            'public',
+            'temp',
+            file.filename
+        );
+
+        fs.unlink(filePath, (err) => {
+            if (err) {
+                console.error(`Failed to remove file: ${filePath}`, err);
+            } else {
+                console.log(`Successfully removed file: ${filePath}`);
+            }
+        });
+    }
+
     if (!errors.isEmpty()) {
         if (req.files) {
             const files = req.files as {
