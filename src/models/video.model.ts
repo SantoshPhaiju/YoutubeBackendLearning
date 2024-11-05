@@ -53,6 +53,11 @@ const videoSchema = new mongoose.Schema(
             type: Boolean,
             default: true,
         },
+        visibility: {
+            type: String,
+            enum: ['public', 'private'],
+            default: 'public',
+        },
     },
     {
         timestamps: true,
