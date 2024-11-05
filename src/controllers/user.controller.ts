@@ -218,7 +218,6 @@ export const getUser = asyncWrapper(async (req: Request, res: Response) => {
 export const refreshAccessToken = asyncWrapper(
     async (req: Request, res: Response) => {
         const { refreshToken } = req.cookies || req.body;
-        console.log('req.bod', req.body, req.cookies, refreshToken);
 
         if (!refreshToken) {
             throw new ApiError(400, 'Refresh token is required');
@@ -230,9 +229,7 @@ export const refreshAccessToken = asyncWrapper(
                 appConfig.refreshTokenSecret!
             );
             const { id } = decodedToken as { id: string };
-            console.log(decodedToken);
             const user = await User.findById(id);
-            console.log('user', user);
 
             if (!user) {
                 throw new ApiError(404, 'Invalid refresh token');
@@ -325,8 +322,6 @@ export const updateUserAvatar = asyncWrapper(
         const { _id } = req.user;
         let avatarLocalPath = '';
 
-        console.log(req.file);
-
         if (req.file) {
             avatarLocalPath = req.file?.path;
         }
@@ -372,8 +367,6 @@ export const updateCoverImage = asyncWrapper(
     async (req: Request, res: Response) => {
         const { _id } = req.user;
         let coverImageLocalPath = '';
-
-        console.log(req.file);
 
         if (req.file) {
             coverImageLocalPath = req.file?.path;
@@ -475,8 +468,6 @@ export const getUserChannelProfile = asyncWrapper(
                 },
             },
         ]);
-
-        console.log(channelData);
 
         if (!channelData?.length) {
             throw new ApiError(404, 'Channel does not exists');

@@ -1,15 +1,13 @@
 import { Request, Response } from 'express';
+import { Video } from '../models/video.model';
 import { ApiError } from '../utils/ApiError';
 import { ApiResponse } from '../utils/ApiResponse';
 import asyncWrapper from '../utils/asyncWrapper';
 import { uploadOnCloudinary } from '../utils/cloudinary';
-import { Video } from '../models/video.model';
 
 export const uploadVideo = asyncWrapper(async (req: Request, res: Response) => {
-    console.log('req.files', req.files);
-    console.log('req.body', req.body);
 
-    const { title, description, visiblity } = req.body;
+    const { title, description, visibility } = req.body;
 
     // Todo: Take Video file and thumbnail file and upload to cloudinary
     let videoLocalPath = '';
@@ -31,24 +29,32 @@ export const uploadVideo = asyncWrapper(async (req: Request, res: Response) => {
         throw new ApiError(400, 'Thumbnail is required');
     }
 
-    const videoCloudinaryUrl = await uploadOnCloudinary(videoLocalPath);
-    const thumbnailCloudinaryUrl = await uploadOnCloudinary(thumbnailLocalPath);
+    const videoCloudinaryResponse = await uploadOnCloudinary(videoLocalPath);
+    const thumbnailCloudinaryResponse =
+        await uploadOnCloudinary(thumbnailLocalPath);
+
+    const videoCloudinaryUrl = videoCloudinaryResponse?.url;
+    const thumbnailCloudinaryUrl = thumbnailCloudinaryResponse?.url;
 
     if (!videoCloudinaryUrl || !thumbnailCloudinaryUrl) {
         throw new ApiError(500, 'Failed to upload video or thumbnail');
     }
 
     const video = new Video({
-        title,
-        description,
-        visiblity,
+        title: title,
+        description: description,
+        visibility: visibility,
         thumbnail: thumbnailCloudinaryUrl,
         videoFile: videoCloudinaryUrl,
         owner: req.user._id,
-        
-    })
+        duration: videoCloudinaryResponse.reponse.duration, // todo: get duration of video
+    });
+
+    const uploadedVideo = await video.save();
 
     res.status(201).json(
-        new ApiResponse(201, 'Video uploaded successfully', {})
+        new ApiResponse(201, 'Video uploaded successfully', {
+            video: uploadedVideo,
+        })
     );
 });
