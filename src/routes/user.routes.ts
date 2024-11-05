@@ -44,6 +44,9 @@ router.route('/update-details').patch(verifyJWT, updateUser);
 
 router.route('/get-channel-data/:username').get(verifyJWT, getUserChannelProfile);
 
+router.route('/get-channel-data/:username/public').get(getUserChannelProfile);
+
+
 router
     .route('/update-user-avatar')
     .patch(verifyJWT, upload.single('avatar'), updateUserAvatar);
