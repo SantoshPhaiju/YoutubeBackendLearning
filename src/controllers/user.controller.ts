@@ -64,16 +64,19 @@ export const registerUser = asyncWrapper(
         }
 
         // * Upload image to cloudinary, avatar
-        const avatarCloudinaryUrl = await uploadOnCloudinary(avatarLocalPath);
+        const avatarCloudinaryResponse =
+            await uploadOnCloudinary(avatarLocalPath);
+        const avatarCloudinaryUrl = avatarCloudinaryResponse?.url || '';
         if (!avatarCloudinaryUrl) {
             throw new ApiError(500, 'Failed to upload avatar image');
         }
 
-        let coverImageCloudinaryUrl: string | null = '';
+        let coverImageCloudinaryUrl = '';
 
         if (coverImageLocalPath) {
-            coverImageCloudinaryUrl =
+            const coverImageResult =
                 await uploadOnCloudinary(coverImageLocalPath);
+            coverImageCloudinaryUrl = coverImageResult?.url || '';
 
             if (!coverImageCloudinaryUrl) {
                 throw new ApiError(500, 'Failed to upload cover image');
@@ -181,7 +184,7 @@ export const logoutUser = asyncWrapper(async (req: Request, res: Response) => {
             // $set: { refreshToken: '' },
             $unset: {
                 refreshToken: 1,
-            }
+            },
         },
         {
             new: true,
@@ -332,7 +335,9 @@ export const updateUserAvatar = asyncWrapper(
             throw new ApiError(400, 'Avatar is required');
         }
 
-        const avatarCloudinaryUrl = await uploadOnCloudinary(avatarLocalPath);
+        const avatarCloudinaryResponse =
+            await uploadOnCloudinary(avatarLocalPath);
+        const avatarCloudinaryUrl = avatarCloudinaryResponse?.url || '';
 
         if (!avatarCloudinaryUrl) {
             throw new ApiError(
@@ -378,8 +383,9 @@ export const updateCoverImage = asyncWrapper(
             throw new ApiError(400, 'Cover Image File is Missing');
         }
 
-        const coverImageCloudinaryUrl =
+        const coverImageCloudinaryResponse =
             await uploadOnCloudinary(coverImageLocalPath);
+        const coverImageCloudinaryUrl = coverImageCloudinaryResponse?.url || '';
 
         if (!coverImageCloudinaryUrl) {
             throw new ApiError(
@@ -513,17 +519,19 @@ export const getWatchHistoryOfUser = asyncWrapper(
                                             fullname: 1,
                                             username: 1,
                                             avatar: 1,
-                                        }
-                                    }
-                                ]
+                                        },
+                                    },
+                                ],
                             },
                         },
                         {
                             $addFields: {
                                 // videoOwner: { $first : "$videoOwner" }
-                                videoOwner: { $arrayElemAt: ["$videoOwner", 0] }
-                            }
-                        }
+                                videoOwner: {
+                                    $arrayElemAt: ['$videoOwner', 0],
+                                },
+                            },
+                        },
                     ],
                 },
             },

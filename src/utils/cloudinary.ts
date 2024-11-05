@@ -10,7 +10,10 @@ cloudinary.config({
 
 export const uploadOnCloudinary = async (
     localFilepath: string
-): Promise<string | null> => {
+): Promise<{
+    url: string;
+    reponse: UploadApiResponse;
+} | null> => {
     try {
         if (!localFilepath) return null;
 
@@ -36,7 +39,10 @@ export const uploadOnCloudinary = async (
         // file has been uploaded successfully
         console.log('File uploaded successfully on cloudinary', response.url);
         fs.unlinkSync(localFilepath); // remove the file from the server after uploading on cloudinary
-        return response.url;
+        return {
+            url: response.url,
+            reponse: response,
+        };
     } catch (error) {
         fs.unlinkSync(localFilepath); // remove the file from the server if it fails to upload on cloudinary
         console.log('cloudinaryerror', error);
