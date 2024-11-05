@@ -440,6 +440,30 @@ export const getUserChannelProfile = asyncWrapper(
                 },
             },
             {
+                $lookup: {
+                    from: 'videos',
+                    localField: '_id',
+                    foreignField: 'owner',
+                    as: 'videos',
+                    pipeline: [
+                        {
+                            $match: {
+                                visibility: 'public',
+                            },
+                        },
+                        {
+                            $project: {
+                                title: 1,
+                                thumbnail: 1,
+                                views: 1,
+                                createdAt: 1,
+                                duration: 1,
+                            },
+                        },
+                    ],
+                },
+            },
+            {
                 $addFields: {
                     subscribersCount: { $size: '$subscribers' },
                     channelsSubscribedToCount: { $size: '$subscribedTo' },
@@ -451,6 +475,9 @@ export const getUserChannelProfile = asyncWrapper(
                             then: true,
                             else: false,
                         },
+                    },
+                    videosCount: {
+                        $size: '$videos',
                     },
                 },
             },
@@ -465,6 +492,8 @@ export const getUserChannelProfile = asyncWrapper(
                     coverImage: 1,
                     createdAt: 1,
                     isSubscribed: 1,
+                    videos: 1,
+                    videosCount: 1,
                 },
             },
         ]);
