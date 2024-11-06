@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { uploadVideo } from '../controllers/video.controller';
+import { getVideoById, uploadVideo } from '../controllers/video.controller';
 import verifyJWT from '../middlewares/auth.middleware';
 import { handleValidationErrors } from '../middlewares/handleValidationErrors';
 import { upload } from '../middlewares/multer.middleware';
@@ -17,5 +17,8 @@ router.route('/upload-video').post(
     handleValidationErrors,
     uploadVideo
 );
+
+router.route('/get-video/:videoId').get(getVideoById);
+router.route('/get-protected-video/:videoId').get(verifyJWT, getVideoById);
 
 export default router;
