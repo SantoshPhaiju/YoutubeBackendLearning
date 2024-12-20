@@ -8,8 +8,7 @@ import { uploadOnCloudinary } from '../utils/cloudinary';
 
 export const uploadVideo = asyncWrapper(async (req: Request, res: Response) => {
     const { title, description, visibility } = req.body;
-
-    // Todo: Take Video file and thumbnail file and upload to cloudinary
+    
     let videoLocalPath = '';
     let thumbnailLocalPath = '';
 
