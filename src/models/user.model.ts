@@ -76,7 +76,7 @@ userSchema.methods.generateAccessToken = function (): string {
         appConfig.accessTokenSecret!,
 
         {
-            expiresIn: appConfig.accessTokenExpiry,
+            expiresIn: '7d',
         }
     );
 };
@@ -89,7 +89,7 @@ userSchema.methods.generateRefreshToken = function (): string {
         appConfig.refreshTokenSecret!,
 
         {
-            expiresIn: appConfig.refreshTokenExpiry,
+            expiresIn: '30d',
         }
     );
 };
