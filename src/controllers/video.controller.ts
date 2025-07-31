@@ -205,3 +205,22 @@ export const getVideoById = asyncWrapper(
         );
     }
 );
+
+export const getHomePageVideos = asyncWrapper(
+    async (req: Request, res: Response) => {
+        const videos = await Video.find({ visibility: 'public' })
+            .sort({ createdAt: -1 })
+            .limit(20)
+            .populate('owner', 'username fullname avatar');
+
+        if (!videos || videos.length === 0) {
+            throw new ApiError(404, 'No videos found');
+        }
+
+        res.status(200).json(
+            new ApiResponse(200, 'Videos fetched successfully', {
+                videos,
+            })
+        );
+    }
+)
