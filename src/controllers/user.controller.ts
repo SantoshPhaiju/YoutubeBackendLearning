@@ -586,7 +586,7 @@ export const getUserChannelProfile = asyncWrapper(
                                 createdAt: 1,
                                 duration: 1,
                                 visibility: 1,
-                                owner: 1, 
+                                owner: 1,
                             },
                         },
                     ],
