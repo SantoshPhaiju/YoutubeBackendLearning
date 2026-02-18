@@ -641,7 +641,6 @@ export const getUserChannelProfile = asyncWrapper(
     }
 );
 
-
 export const getWatchHistoryOfUser = asyncWrapper(
     async (req: Request, res: Response) => {
         const user = await User.aggregate([
