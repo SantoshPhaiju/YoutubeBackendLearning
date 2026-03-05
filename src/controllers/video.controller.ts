@@ -192,7 +192,6 @@ export const getVideoById = asyncWrapper(
         ];
 
         const video = await Video.aggregate(pipeline);
-        console.log('video', video);
 
         if (!video || video.length === 0) {
             throw new ApiError(404, 'Video not found');
