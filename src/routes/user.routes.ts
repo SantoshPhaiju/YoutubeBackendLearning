@@ -13,7 +13,7 @@ import {
     updateUserAvatar,
 } from '../controllers/user.controller';
 import verifyJWT from '../middlewares/auth.middleware';
-import { handleValidationErrors } from '../middlewares/handleValidationErrors';
+import { handleValidationErrorsMiddleware } from '../middlewares/handleValidationErrors.middleware';
 import { upload } from '../middlewares/multer.middleware';
 import { registerRouteValidator } from '../validators/registerRoute.validator';
 
@@ -25,7 +25,7 @@ router.route('/register').post(
         { name: 'coverImage', maxCount: 1 },
     ]),
     registerRouteValidator(),
-    handleValidationErrors,
+    handleValidationErrorsMiddleware,
     registerUser
 );
 

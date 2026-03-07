@@ -3,7 +3,7 @@ import { validationResult } from 'express-validator';
 import fs from 'fs';
 import path from 'path';
 
-export const handleValidationErrors = (
+export const handleValidationErrorsMiddleware = (
     req: Request,
     res: Response,
     next: NextFunction
