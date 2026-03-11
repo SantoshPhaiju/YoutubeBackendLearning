@@ -6,6 +6,7 @@ import { appConfig } from './config/config';
 const app: Express = express();
 
 const { corsOrigin } = appConfig;
+console.log("corsOrigin", corsOrigin)
 
 app.use(
     cors({

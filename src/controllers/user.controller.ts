@@ -127,6 +127,8 @@ export const loginUser = asyncWrapper(async (req: Request, res: Response) => {
     // * Sending the response to the user
 
     const { username, email, password } = req.body;
+    console.log(req.body);
+
 
     let user;
 
