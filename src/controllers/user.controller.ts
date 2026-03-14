@@ -211,9 +211,12 @@ export const getUser = asyncWrapper(async (req: Request, res: Response) => {
     // if (!user) {
     //     throw new ApiError(404, 'User not found');
     // }
+    const user = req.user.toObject();
+    delete user.password;
+    delete user.refreshToken;
 
     res.status(200).json(
-        new ApiResponse(200, 'Current User fetched successfully!', req.user)
+        new ApiResponse(200, 'Current User fetched successfully!', user)
     );
 });
 
