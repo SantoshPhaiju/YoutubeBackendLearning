@@ -126,7 +126,7 @@ export const loginUser = asyncWrapper(async (req: Request, res: Response) => {
     // * Saving the refresh token to the database
     // * Sending the response to the user
 
-    const { username, email, password } = req.body;
+    const { usernameoremail, password } = req.body;
     console.log(req.body);
 
 
@@ -136,9 +136,9 @@ export const loginUser = asyncWrapper(async (req: Request, res: Response) => {
         throw new ApiError(400, 'Password is required');
     }
 
-    if (username || email) {
+    if (usernameoremail) {
         user = await User.findOne({
-            $or: [{ username }, { email }],
+            $or: [{ username: usernameoremail }, { email: usernameoremail }],
         });
     } else {
         throw new ApiError(400, 'Username or email is required');
