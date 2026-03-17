@@ -44,7 +44,7 @@ export const registerUser = asyncWrapper(
         });
 
         if (existedUser) {
-            throw new ApiError(400, 'User already exists');
+            throw new ApiError(400, 'Username or email already taken!');
         }
 
         // * check for images, check for avatar
