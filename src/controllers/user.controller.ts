@@ -166,9 +166,15 @@ export const loginUser = asyncWrapper(async (req: Request, res: Response) => {
         secure: true,
     };
 
+    const userDetails = {
+        username: loggedInUser.username,
+        email: loggedInUser.email,
+    }
+
     res.status(200)
         .cookie('accessToken', accessToken, options)
         .cookie('refreshToken', refreshToken, options)
+        .cookie('user', JSON.stringify(loggedInUser), options)
         .json(
             new ApiResponse(200, 'User logged in successfully', {
                 accessToken: accessToken,
