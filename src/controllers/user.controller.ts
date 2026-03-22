@@ -623,7 +623,7 @@ export const getUserChannelProfile = asyncWrapper(
             },
             {
                 $project: {
-                    fullName: 1,
+                    fullname: 1,
                     username: 1,
                     email: 1,
                     subscribersCount: 1,
@@ -638,6 +638,7 @@ export const getUserChannelProfile = asyncWrapper(
             },
         ]);
 
+        console.log("channelData: ", channelData);
         if (!channelData?.length) {
             throw new ApiError(404, 'Channel does not exist');
         }
