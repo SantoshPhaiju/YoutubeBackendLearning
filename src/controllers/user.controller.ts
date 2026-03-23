@@ -207,6 +207,7 @@ export const logoutUser = asyncWrapper(async (req: Request, res: Response) => {
     res.status(200)
         .clearCookie('accessToken', options)
         .clearCookie('refreshToken', options)
+        .clearCookie('user', options)
         .json(new ApiResponse(200, 'User logged out successfully', null));
 });
 
