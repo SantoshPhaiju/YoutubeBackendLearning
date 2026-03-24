@@ -127,7 +127,6 @@ export const loginUser = asyncWrapper(async (req: Request, res: Response) => {
     // * Sending the response to the user
 
     const { usernameoremail, password } = req.body;
-    console.log(req.body);
 
 
     let user;
@@ -639,8 +638,6 @@ export const getUserChannelProfile = asyncWrapper(
                 },
             },
         ]);
-
-        console.log("channelData: ", channelData);
         if (!channelData?.length) {
             throw new ApiError(404, 'Channel does not exist');
         }
