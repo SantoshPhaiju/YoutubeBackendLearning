@@ -594,11 +594,12 @@ export const getUserChannelProfile = asyncWrapper(
                             $project: {
                                 title: 1,
                                 thumbnail: 1,
-                                views: 1,
+                                viewCount: 1,
                                 createdAt: 1,
                                 duration: 1,
                                 visibility: 1,
                                 owner: 1,
+                                isPublished: 1,
                             },
                         },
                     ],
