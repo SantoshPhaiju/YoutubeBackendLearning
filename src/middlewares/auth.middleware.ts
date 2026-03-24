@@ -12,32 +12,61 @@ interface JwtPayload {
     exp: number;
 }
 
+const getTokenFromRequest = (req: Request): string | undefined => {
+    return (
+        req.header('Authorization')?.replace('Bearer ', '') ||
+        req?.cookies.accessToken
+    );
+};
+
+const verifyAndAttachUser = async (token: string) => {
+    const decodedUserData = jwt.verify(
+        token,
+        process.env.ACCESS_TOKEN_SECRET!
+    ) as JwtPayload;
+
+    const user = await User.findById(decodedUserData.id);
+
+    if (!user) {
+        throw new ApiError(401, 'Invalid access token');
+    }
+
+    return user;
+};
+
 const verifyJWT = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const token: string =
-            req.header('Authorization')?.replace('Bearer ', '') ||
-            req?.cookies.accessToken;
+        const token = getTokenFromRequest(req);
 
         if (!token) {
             return next(new ApiError(401, 'Unauthorized request'));
         }
 
-        const decodedUserData = jwt.verify(
-            token,
-            process.env.ACCESS_TOKEN_SECRET!
-        ) as JwtPayload;
-
-        const user = await User.findById(decodedUserData.id);
-
-        if (!user) {
-            return next(new ApiError(401, 'Invalid access token'));
-        }
-
-        req.user = user;
+        req.user = await verifyAndAttachUser(token);
         next();
     } catch (error: any) {
-        console.error('JWT Verification Error:', error); // Log the error
-        next(new ApiError(401, error?.message || 'Unauthorized request')); // Pass the error to next
+        console.error('JWT Verification Error:', error);
+        next(new ApiError(401, error?.message || 'Unauthorized request'));
+    }
+};
+
+export const optionalVerifyJWT = async (
+    req: Request,
+    _res: Response,
+    next: NextFunction
+) => {
+    try {
+        const token = getTokenFromRequest(req);
+
+        if (!token) {
+            return next();
+        }
+
+        req.user = await verifyAndAttachUser(token);
+        next();
+    } catch {
+        // Ignore invalid token on optional auth routes; treat as guest.
+        next();
     }
 };
 
