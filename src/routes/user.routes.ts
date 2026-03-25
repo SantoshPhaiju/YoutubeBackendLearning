@@ -12,7 +12,7 @@ import {
     updateUser,
     updateUserAvatar,
 } from '../controllers/user.controller';
-import verifyJWT from '../middlewares/auth.middleware';
+import verifyJWT, { optionalVerifyJWT } from '../middlewares/auth.middleware';
 import { handleValidationErrorsMiddleware } from '../middlewares/handleValidationErrors.middleware';
 import { upload } from '../middlewares/multer.middleware';
 import { registerRouteValidator } from '../validators/registerRoute.validator';
@@ -42,11 +42,13 @@ router.route('/change-password').patch(verifyJWT, changeCurrentPassword);
 
 router.route('/update-details').patch(verifyJWT, updateUser);
 
-router
-    .route('/get-channel-data/:username')
-    .get(verifyJWT, getUserChannelProfile);
+// router
+//     .route('/get-channel-data/:username')
+//     .get(verifyJWT, getUserChannelProfile);
+//
+// router.route('/get-channel-data/:username/public').get(getUserChannelProfile);
 
-router.route('/get-channel-data/:username/public').get(getUserChannelProfile);
+router.route('/get-channel-data/:username').get(optionalVerifyJWT, getUserChannelProfile);
 
 router
     .route('/update-user-avatar')

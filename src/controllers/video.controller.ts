@@ -5,6 +5,8 @@ import { ApiError } from '../utils/ApiError';
 import { ApiResponse } from '../utils/ApiResponse';
 import asyncWrapper from '../utils/asyncWrapper';
 import { uploadOnCloudinary } from '../utils/cloudinary';
+import { detectCategory } from '../utils/detectCategory';
+import extractTags from '../utils/extractTags';
 
 export const uploadVideo = asyncWrapper(async (req: Request, res: Response) => {
     const { title, description, visibility } = req.body;
@@ -40,6 +42,9 @@ export const uploadVideo = asyncWrapper(async (req: Request, res: Response) => {
         throw new ApiError(500, 'Failed to upload video or thumbnail');
     }
 
+    const categoryId = await detectCategory({ title, description });
+    const tags = extractTags(title, description);
+
     const video = new Video({
         title: title,
         description: description,
@@ -48,6 +53,8 @@ export const uploadVideo = asyncWrapper(async (req: Request, res: Response) => {
         videoFile: videoCloudinaryUrl,
         owner: req.user._id,
         duration: videoCloudinaryResponse.reponse.duration, // todo: get duration of video
+        categoryId: categoryId,
+        tags: tags,
     });
 
     const uploadedVideo = await video.save();
@@ -192,6 +199,7 @@ export const getVideoById = asyncWrapper(
         ];
 
         const video = await Video.aggregate(pipeline);
+
 
         if (!video || video.length === 0) {
             throw new ApiError(404, 'Video not found');

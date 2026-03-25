@@ -19,6 +19,7 @@ const videoSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+
         owner: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
@@ -45,6 +46,18 @@ const videoSchema = new mongoose.Schema(
                 ref: 'Comment',
             },
         ],
+        tags: [
+            {
+                type: String,
+                lowercase: true,
+                index: true,
+            },
+        ],
+        categoryId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Category',
+            index: true,
+        },
         duration: {
             type: Number,
             required: true,
