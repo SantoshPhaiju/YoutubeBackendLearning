@@ -1,0 +1,1012 @@
+[
+  {
+    "name": "music",
+    "tags": [
+      "pop", "rock", "hip hop", "jazz", "classical", "blues", "country", "r&b",
+      "electronic", "reggae", "metal", "punk", "soul", "folk", "indie", "latin",
+      "k-pop", "afrobeats", "gospel", "opera", "lofi", "synthwave", "trap",
+      "drum and bass", "house", "techno", "ambient", "acoustic", "instrumental",
+      "cover songs", "live performance", "music theory", "songwriting", "lyrics",
+      "music production", "mixing", "mastering", "guitar", "piano", "violin",
+      "drums", "bass guitar", "singing", "vocal training", "beatmaking", "dj",
+      "music video", "concert", "album review", "playlist", "new releases"
+    ]
+  },
+  {
+    "name": "gaming",
+    "tags": [
+      "action", "adventure", "rpg", "fps", "strategy", "simulation", "sports",
+      "racing", "puzzle", "horror", "sandbox", "mmorpg", "battle royale",
+      "indie games", "mobile gaming", "pc gaming", "console gaming", "retro gaming",
+      "game review", "gameplay", "walkthrough", "speedrun", "esports", "streaming",
+      "game trailer", "early access", "open world", "multiplayer", "co-op",
+      "nintendo", "playstation", "xbox", "steam", "twitch clips", "game mods",
+      "game dev", "unity", "unreal engine", "level design", "lore", "easter eggs",
+      "tips and tricks", "ranking", "tier list", "patch notes", "game news",
+      "vr gaming", "game soundtrack", "minecraft", "fortnite", "gta"
+    ]
+  },
+  {
+    "name": "food & cooking",
+    "tags": [
+      "recipes", "baking", "grilling", "vegan", "vegetarian", "keto", "paleo",
+      "meal prep", "street food", "fine dining", "fast food", "desserts", "breakfast",
+      "lunch", "dinner", "snacks", "cocktails", "coffee", "tea", "smoothies",
+      "italian cuisine", "asian cuisine", "mexican cuisine", "indian cuisine",
+      "french cuisine", "mediterranean", "middle eastern", "japanese cuisine",
+      "chinese cuisine", "thai cuisine", "pasta", "pizza", "sushi", "bbq",
+      "air fryer", "instant pot", "knife skills", "food hacks", "mukbang",
+      "food review", "restaurant tour", "market visit", "fermentation",
+      "bread making", "cake decorating", "food science", "nutrition", "meal ideas",
+      "comfort food", "healthy eating", "low calorie", "high protein"
+    ]
+  },
+  {
+    "name": "travel",
+    "tags": [
+      "solo travel", "backpacking", "budget travel", "luxury travel", "road trip",
+      "travel vlog", "city guide", "hotel review", "hostel", "airbnb",
+      "europe travel", "asia travel", "africa travel", "south america", "north america",
+      "oceania", "middle east", "island hopping", "cruise", "camping",
+      "hiking", "adventure travel", "cultural tourism", "heritage sites", "beaches",
+      "mountains", "deserts", "forest", "national parks", "hidden gems",
+      "travel tips", "packing guide", "travel hacks", "flight tips", "visa guide",
+      "travel photography", "digital nomad", "remote work travel", "family travel",
+      "travel gear", "language tips", "food tourism", "sustainable travel",
+      "travel insurance", "itinerary", "bucket list", "travel documentary"
+    ]
+  },
+  {
+    "name": "fitness & workout",
+    "tags": [
+      "weight training", "cardio", "hiit", "yoga", "pilates", "crossfit",
+      "bodybuilding", "powerlifting", "calisthenics", "stretching", "mobility",
+      "running", "cycling", "swimming", "home workout", "gym workout",
+      "beginner workout", "weight loss", "muscle gain", "fat burning", "core workout",
+      "leg day", "chest workout", "back workout", "shoulder workout", "arm workout",
+      "full body", "workout routine", "fitness challenge", "transformation",
+      "pre-workout", "post-workout", "recovery", "foam rolling", "sports nutrition",
+      "protein", "supplements", "marathon training", "athletic performance",
+      "personal trainer", "fitness motivation", "workout music", "fitness gear",
+      "posture correction", "injury prevention", "physical therapy", "plyometrics",
+      "kettlebell", "resistance bands", "dumbbell", "barbell"
+    ]
+  },
+  {
+    "name": "beauty & skincare",
+    "tags": [
+      "makeup tutorial", "skincare routine", "hair care", "nail art", "eyeshadow",
+      "foundation", "concealer", "contouring", "highlight", "blush", "lipstick",
+      "mascara", "eyeliner", "eyebrow", "skincare for beginners", "anti-aging",
+      "acne treatment", "moisturizer", "sunscreen", "serum", "toner", "cleanser",
+      "face mask", "exfoliation", "natural skincare", "korean beauty", "k-beauty",
+      "drug store haul", "high end makeup", "product review", "full glam",
+      "no makeup look", "grwm", "hair tutorial", "curly hair", "straight hair",
+      "hair coloring", "balayage", "hair extensions", "protective styles",
+      "braids", "natural hair", "scalp care", "perfume", "body care",
+      "self care routine", "gua sha", "facial massage", "dermatology tips"
+    ]
+  },
+  {
+    "name": "fashion & style",
+    "tags": [
+      "outfit ideas", "ootd", "street style", "casual wear", "formal wear",
+      "luxury fashion", "thrift shopping", "sustainable fashion", "fast fashion",
+      "haul", "lookbook", "fashion week", "runway", "style tips", "capsule wardrobe",
+      "minimalist fashion", "maximalist fashion", "vintage fashion", "y2k fashion",
+      "mens fashion", "womens fashion", "gender neutral", "plus size fashion",
+      "seasonal fashion", "summer outfits", "winter outfits", "spring outfits",
+      "fall outfits", "workwear", "athleisure", "loungewear", "accessories",
+      "bags", "shoes", "jewelry", "watches", "sunglasses", "hats",
+      "fashion history", "designer brands", "fashion tips", "color theory",
+      "body type styling", "wardrobe essentials", "outfit challenge", "styling hacks",
+      "denim", "dresses", "suits", "sneakers"
+    ]
+  },
+  {
+    "name": "health & wellness",
+    "tags": [
+      "mental health", "meditation", "mindfulness", "stress management", "anxiety",
+      "depression awareness", "therapy", "sleep hygiene", "gut health", "immunity",
+      "hormonal health", "womens health", "mens health", "chronic illness",
+      "autoimmune", "diabetes", "heart health", "nutrition", "dietitian advice",
+      "holistic health", "ayurveda", "traditional medicine", "breathwork",
+      "cold therapy", "sauna", "detox", "fasting", "intermittent fasting",
+      "biohacking", "longevity", "healthy aging", "posture", "spine health",
+      "eye health", "dental care", "hearing health", "skin health", "hair health",
+      "weight management", "body image", "self love", "positive psychology",
+      "journaling", "gratitude", "habit building", "work life balance",
+      "digital detox", "nature therapy", "sound healing", "reiki"
+    ]
+  },
+  {
+    "name": "education & learning",
+    "tags": [
+      "science", "mathematics", "history", "geography", "physics", "chemistry",
+      "biology", "astronomy", "literature", "philosophy", "psychology", "sociology",
+      "economics", "political science", "law", "linguistics", "anthropology",
+      "study tips", "exam preparation", "note-taking", "speed reading",
+      "memory techniques", "online learning", "university life", "student tips",
+      "homeschooling", "tutoring", "crash course", "explainer videos",
+      "documentary", "ted talk style", "critical thinking", "problem solving",
+      "research skills", "academic writing", "citations", "thesis writing",
+      "debate", "public speaking", "logic", "statistics", "data literacy",
+      "financial literacy", "media literacy", "digital literacy", "stem",
+      "arts education", "music education", "physical education", "special education"
+    ]
+  },
+  {
+    "name": "technology",
+    "tags": [
+      "smartphones", "laptops", "tablets", "wearables", "smart home", "iot",
+      "artificial intelligence", "machine learning", "robotics", "blockchain",
+      "cryptocurrency", "nft", "metaverse", "vr", "ar", "quantum computing",
+      "cybersecurity", "privacy", "tech news", "product review", "unboxing",
+      "comparison", "best of list", "tech tips", "troubleshooting", "setup guide",
+      "apple", "android", "windows", "linux", "macos", "browser extensions",
+      "software", "apps", "saas", "cloud computing", "data centers",
+      "electric vehicles", "self-driving cars", "drones", "3d printing",
+      "space technology", "biotech", "nanotech", "renewable energy tech",
+      "social media platforms", "streaming platforms", "gaming hardware",
+      "camera gear", "audio gear", "keyboards", "monitors"
+    ]
+  },
+  {
+    "name": "programming & coding",
+    "tags": [
+      "javascript", "python", "java", "c++", "typescript", "rust", "go",
+      "web development", "mobile development", "backend", "frontend", "full stack",
+      "react", "vue", "angular", "node.js", "django", "spring boot",
+      "databases", "sql", "nosql", "api design", "rest", "graphql",
+      "devops", "docker", "kubernetes", "cloud", "aws", "open source",
+      "algorithms", "data structures", "system design", "code review",
+      "debugging", "testing", "clean code", "design patterns", "microservices",
+      "machine learning", "deep learning", "nlp", "computer vision",
+      "cybersecurity", "ethical hacking", "competitive programming",
+      "freelancing", "software career", "coding interview", "leetcode",
+      "git", "agile", "scrum", "side projects", "portfolio"
+    ]
+  },
+  {
+    "name": "finance & investing",
+    "tags": [
+      "stock market", "investing for beginners", "index funds", "etf",
+      "dividend investing", "growth stocks", "value investing", "day trading",
+      "swing trading", "options trading", "forex", "cryptocurrency", "bitcoin",
+      "ethereum", "defi", "real estate investing", "reits", "rental property",
+      "budgeting", "saving money", "emergency fund", "debt payoff",
+      "credit score", "credit cards", "personal finance", "financial independence",
+      "fire movement", "retirement planning", "401k", "roth ira", "pension",
+      "passive income", "side hustle", "income streams", "net worth",
+      "tax tips", "tax filing", "accounting basics", "financial planning",
+      "insurance", "estate planning", "wealth building", "frugal living",
+      "money mindset", "economic news", "market analysis", "earnings reports",
+      "inflation", "interest rates", "recession", "portfolio diversification"
+    ]
+  },
+  {
+    "name": "entrepreneurship & business",
+    "tags": [
+      "startup", "business ideas", "business plan", "product launch",
+      "market research", "target audience", "branding", "logo design",
+      "business model", "monetization", "revenue streams", "fundraising",
+      "venture capital", "angel investing", "bootstrapping", "lean startup",
+      "mvp", "product market fit", "scaling", "growth hacking",
+      "digital marketing", "seo", "content marketing", "email marketing",
+      "social media marketing", "influencer marketing", "paid ads",
+      "sales techniques", "copywriting", "lead generation", "customer retention",
+      "ecommerce", "dropshipping", "amazon fba", "print on demand",
+      "saas business", "agency", "consulting", "freelancing", "solopreneur",
+      "business books", "ceo mindset", "leadership", "team building",
+      "remote team", "productivity", "time management", "business tools"
+    ]
+  },
+  {
+    "name": "science & nature",
+    "tags": [
+      "astronomy", "space exploration", "nasa", "black holes", "planets",
+      "climate change", "environment", "ecology", "biodiversity", "wildlife",
+      "ocean life", "marine biology", "zoology", "botany", "entomology",
+      "geology", "volcanoes", "earthquakes", "weather", "meteorology",
+      "physics", "quantum mechanics", "relativity", "particle physics",
+      "chemistry", "organic chemistry", "biochemistry", "molecular biology",
+      "genetics", "dna", "evolution", "natural selection", "paleontology",
+      "dinosaurs", "prehistoric life", "archaeology", "anthropology",
+      "neuroscience", "brain science", "psychology research", "ai research",
+      "robotics research", "renewable energy", "sustainability", "conservation",
+      "animal behavior", "plant science", "mushrooms", "deep sea", "rainforest"
+    ]
+  },
+  {
+    "name": "art & creativity",
+    "tags": [
+      "drawing", "painting", "watercolor", "oil painting", "acrylic",
+      "digital art", "illustration", "concept art", "character design",
+      "portrait", "landscape", "abstract art", "street art", "graffiti",
+      "sculpture", "pottery", "ceramics", "printmaking", "art history",
+      "art critique", "museum tour", "gallery", "fine art", "contemporary art",
+      "art tutorial", "sketching", "procreate", "photoshop", "clip studio",
+      "color theory", "composition", "perspective drawing", "figure drawing",
+      "anime art", "fan art", "commission art", "nft art", "generative art",
+      "art challenge", "inktober", "sketchbook tour", "art supplies",
+      "calligraphy", "typography", "lettering", "collage", "mixed media",
+      "pixel art", "sticker design", "surface pattern", "textile art"
+    ]
+  },
+  {
+    "name": "photography & film",
+    "tags": [
+      "portrait photography", "landscape photography", "street photography",
+      "wildlife photography", "macro photography", "astrophotography",
+      "product photography", "fashion photography", "wedding photography",
+      "documentary photography", "photojournalism", "film photography",
+      "camera review", "lens review", "camera settings", "exposure triangle",
+      "composition tips", "lighting setup", "studio photography", "natural light",
+      "editing tutorial", "lightroom", "photoshop", "capture one", "vsco",
+      "color grading", "raw vs jpeg", "video production", "cinematography",
+      "filmmaking", "short film", "documentary making", "drone photography",
+      "iphone photography", "mirrorless camera", "dslr", "medium format",
+      "film stock", "darkroom", "photo book", "photography business",
+      "stock photography", "photo critique", "photography challenge"
+    ]
+  },
+  {
+    "name": "movies & tv shows",
+    "tags": [
+      "movie review", "tv show review", "series recommendation", "film analysis",
+      "box office", "behind the scenes", "director spotlight", "actor interview",
+      "screenplay writing", "film theory", "cinema history", "cult classics",
+      "horror movies", "thriller", "action movies", "comedy", "romance",
+      "sci-fi", "fantasy", "animation", "documentary film", "indie film",
+      "blockbuster", "marvel", "dc", "star wars", "disney", "pixar",
+      "streaming reviews", "netflix", "hbo", "prime video", "apple tv",
+      "trailer reaction", "casting news", "awards season", "oscars",
+      "emmys", "golden globes", "film festival", "cannes", "sundance",
+      "anime", "kdrama", "telenovela", "reality tv", "true crime", "miniseries",
+      "season finale", "fan theory", "easter eggs", "deleted scenes"
+    ]
+  },
+  {
+    "name": "sports",
+    "tags": [
+      "football", "basketball", "soccer", "baseball", "tennis", "cricket",
+      "rugby", "golf", "boxing", "mma", "ufc", "wrestling", "swimming",
+      "athletics", "track and field", "cycling", "volleyball", "table tennis",
+      "badminton", "hockey", "ice hockey", "skiing", "snowboarding", "surfing",
+      "skateboarding", "gymnastics", "martial arts", "archery", "fencing",
+      "sports analysis", "game highlights", "match recap", "player profile",
+      "team news", "transfer news", "sports history", "record breaking",
+      "training techniques", "sports science", "injury updates", "referee decisions",
+      "fantasy sports", "sports betting", "esports", "olympics", "world cup",
+      "championship", "playoffs", "draft picks", "sports documentary",
+      "athlete interview", "coaching tips", "youth sports"
+    ]
+  },
+  {
+    "name": "news & politics",
+    "tags": [
+      "breaking news", "world news", "us politics", "uk politics", "elections",
+      "government policy", "legislation", "supreme court", "international relations",
+      "foreign policy", "diplomacy", "war and conflict", "human rights",
+      "democracy", "authoritarianism", "political parties", "debate",
+      "presidential election", "campaign", "public policy", "immigration",
+      "climate policy", "healthcare policy", "education policy", "economic policy",
+      "geopolitics", "united nations", "nato", "eu politics", "asia pacific",
+      "middle east politics", "africa news", "latin america news",
+      "media analysis", "fact checking", "investigative journalism",
+      "whistleblowers", "corruption", "protests", "social movements",
+      "civil rights", "lgbtq+ rights", "womens rights", "disability rights",
+      "freedom of speech", "censorship", "misinformation", "propaganda"
+    ]
+  },
+  {
+    "name": "history",
+    "tags": [
+      "ancient history", "medieval history", "modern history", "world war 1",
+      "world war 2", "cold war", "roman empire", "greek civilization",
+      "egyptian civilization", "mesopotamia", "chinese history", "japanese history",
+      "indian history", "african history", "latin american history",
+      "american history", "european history", "ottoman empire", "british empire",
+      "colonialism", "decolonization", "industrial revolution", "renaissance",
+      "reformation", "enlightenment", "french revolution", "american revolution",
+      "civil war", "slavery history", "holocaust", "vietnam war", "korean war",
+      "cold war espionage", "historical figures", "monarchy history",
+      "archaeological discoveries", "ancient ruins", "lost civilizations",
+      "historical mysteries", "mythology", "folklore", "oral history",
+      "historical documents", "history of religion", "history of science",
+      "maritime history", "military history", "economic history"
+    ]
+  },
+  {
+    "name": "animals & pets",
+    "tags": [
+      "dogs", "cats", "birds", "fish", "reptiles", "rabbits", "hamsters",
+      "guinea pigs", "horses", "farm animals", "exotic pets", "wild animals",
+      "wildlife documentary", "ocean animals", "big cats", "primates",
+      "elephants", "wolves", "bears", "birds of prey", "insects", "spiders",
+      "pet care", "dog training", "cat behavior", "veterinary tips",
+      "pet health", "pet grooming", "pet food review", "puppy training",
+      "kitten care", "pet adoption", "rescue animals", "animal rehabilitation",
+      "zoo tours", "safari", "aquarium", "bird watching", "wildlife photography",
+      "animal rights", "conservation", "endangered species", "animal facts",
+      "funny animals", "cute animals", "animal compilation", "pet vlog",
+      "fish tank setup", "terrarium", "vivarium", "animal sounds"
+    ]
+  },
+  {
+    "name": "diy & crafts",
+    "tags": [
+      "home improvement", "woodworking", "metalworking", "painting walls",
+      "tiling", "plumbing basics", "electrical basics", "furniture making",
+      "upcycling", "thrift flip", "paper crafts", "origami", "knitting",
+      "crocheting", "sewing", "embroidery", "macrame", "weaving", "quilting",
+      "candle making", "soap making", "resin art", "jewelry making",
+      "leather crafting", "bookbinding", "scrapbooking", "card making",
+      "festive decorations", "christmas diy", "halloween crafts",
+      "wreath making", "flower arrangement", "terrarium making", "tie dye",
+      "screen printing", "block printing", "lino cutting", "glass painting",
+      "mosaic art", "clay sculpting", "polymer clay", "air dry clay",
+      "cosplay making", "prop making", "3d printing projects", "laser cutting",
+      "home organization", "storage hacks", "room makeover"
+    ]
+  },
+  {
+    "name": "home & interior design",
+    "tags": [
+      "interior design", "home decor", "room makeover", "apartment tour",
+      "house tour", "minimalist home", "scandinavian design", "boho decor",
+      "modern farmhouse", "industrial style", "mid century modern", "japandi",
+      "maximalist decor", "small space living", "studio apartment", "tiny home",
+      "bedroom decor", "living room ideas", "kitchen design", "bathroom renovation",
+      "home office setup", "nursery design", "kids room", "outdoor living",
+      "garden design", "balcony decor", "lighting design", "color palette",
+      "furniture arrangement", "decluttering", "organization tips", "storage solutions",
+      "cleaning routine", "deep cleaning", "home maintenance", "renting tips",
+      "homeowner tips", "real estate", "rental decor", "airbnb design",
+      "diy home projects", "wallpaper", "curtains", "rugs", "art walls",
+      "plants at home", "smart home", "eco friendly home"
+    ]
+  },
+  {
+    "name": "relationship & dating",
+    "tags": [
+      "dating tips", "first date", "online dating", "dating apps", "tinder",
+      "bumble", "long distance relationship", "marriage advice", "couples tips",
+      "communication in relationships", "trust and jealousy", "breakup advice",
+      "getting over an ex", "moving on", "self worth", "attachment styles",
+      "love languages", "toxic relationships", "red flags", "green flags",
+      "healthy relationships", "boundaries", "codependency", "narcissism",
+      "friendship advice", "social skills", "introvert dating", "confidence",
+      "approaching someone", "rejection handling", "dating in your 20s",
+      "dating in your 30s", "interracial dating", "intercultural relationships",
+      "lgbtq+ relationships", "non-binary dating", "polyamory", "open relationships",
+      "marriage preparation", "proposal ideas", "wedding planning",
+      "parenting relationships", "family dynamics", "in-laws", "divorce advice",
+      "co-parenting", "single parenting", "blended families"
+    ]
+  },
+  {
+    "name": "parenting & family",
+    "tags": [
+      "newborn care", "baby sleep", "breastfeeding", "bottle feeding", "baby food",
+      "toddler activities", "potty training", "child development", "school readiness",
+      "homework help", "teenager parenting", "discipline strategies", "positive parenting",
+      "gentle parenting", "authoritative parenting", "single parenting",
+      "co-parenting", "blended family", "adoption", "foster care",
+      "special needs parenting", "autism parenting", "adhd parenting",
+      "homeschooling", "unschooling", "waldorf method", "montessori",
+      "family routines", "family travel", "budget family activities",
+      "family recipes", "family game night", "screen time", "digital parenting",
+      "child safety online", "sex education for kids", "mental health in kids",
+      "anxiety in children", "bullying", "social skills for kids",
+      "raising readers", "stem for kids", "creative kids", "sports for kids",
+      "grandparenting", "multigenerational living"
+    ]
+  },
+  {
+    "name": "spirituality & religion",
+    "tags": [
+      "christianity", "islam", "hinduism", "buddhism", "judaism", "sikhism",
+      "taoism", "jainism", "zoroastrianism", "indigenous spirituality",
+      "new age spirituality", "astrology", "tarot", "numerology", "crystals",
+      "chakras", "reiki", "energy healing", "law of attraction", "manifestation",
+      "meditation practices", "prayer", "scripture study", "bible study",
+      "quran study", "bhagavad gita", "yoga philosophy", "zen buddhism",
+      "tibetan buddhism", "theravada", "sufism", "kabbalah", "gnosticism",
+      "paganism", "wicca", "shamanism", "spirituality and science",
+      "near death experiences", "past life regression", "akashic records",
+      "spiritual awakening", "dark night of the soul", "faith and doubt",
+      "interfaith dialogue", "religious history", "comparative religion",
+      "church life", "mosque life", "temple life", "pilgrimage"
+    ]
+  },
+  {
+    "name": "psychology & self-help",
+    "tags": [
+      "self improvement", "personal development", "goal setting", "motivation",
+      "discipline", "habits", "morning routine", "evening routine", "productivity",
+      "time management", "procrastination", "focus", "deep work", "flow state",
+      "growth mindset", "fixed mindset", "confidence building", "self esteem",
+      "overcoming fear", "comfort zone", "emotional intelligence", "empathy",
+      "communication skills", "assertiveness", "people pleasing", "boundaries",
+      "cognitive behavioral therapy", "dbt", "trauma therapy", "inner child",
+      "shadow work", "imposter syndrome", "perfectionism", "overthinking",
+      "anxiety coping", "depression coping", "grief", "loss", "loneliness",
+      "social anxiety", "anger management", "forgiveness", "letting go",
+      "book summaries", "psychology research explained", "personality types",
+      "mbti", "enneagram", "big five personality", "human behavior",
+      "body language", "persuasion", "influence", "negotiation"
+    ]
+  },
+  {
+    "name": "comedy & entertainment",
+    "tags": [
+      "stand up comedy", "sketch comedy", "improv", "roast", "satire",
+      "parody", "memes", "internet humor", "dark humor", "self deprecating humor",
+      "comedy reaction", "bloopers", "fails compilation", "prank videos",
+      "hidden camera", "challenge videos", "try not to laugh", "impression",
+      "character comedy", "absurdist comedy", "dry humor", "wit",
+      "late night comedy", "talk show clips", "roast battles",
+      "celebrity impressions", "political satire", "news parody",
+      "animated comedy", "family friendly comedy", "adult comedy",
+      "college humor", "observational comedy", "story time", "reddit stories",
+      "aita", "am i the asshole", "confession videos", "cringe compilation",
+      "vintage comedy", "comedy history", "comedian biography",
+      "comedy writing", "joke writing", "timing in comedy",
+      "physical comedy", "slapstick", "awkward situations"
+    ]
+  },
+  {
+    "name": "anime & manga",
+    "tags": [
+      "shounen", "shoujo", "seinen", "josei", "isekai", "mecha", "slice of life",
+      "romance anime", "action anime", "fantasy anime", "horror anime",
+      "psychological anime", "mystery anime", "sports anime", "music anime",
+      "one piece", "naruto", "demon slayer", "attack on titan", "my hero academia",
+      "jujutsu kaisen", "dragon ball", "fullmetal alchemist", "hunter x hunter",
+      "death note", "sword art online", "re:zero", "tokyo ghoul",
+      "anime review", "anime recommendation", "top anime list", "seasonal anime",
+      "manga review", "manga recommendation", "light novel", "webtoon",
+      "anime opening", "anime ost", "anime analysis", "character analysis",
+      "fan theory", "anime lore", "anime news", "voice actors",
+      "anime art style", "animation comparison", "studio comparison",
+      "anime merchandise", "figure collection", "cosplay anime",
+      "anime convention", "dubbed vs subbed", "anime movie"
+    ]
+  },
+  {
+    "name": "kids & family entertainment",
+    "tags": [
+      "cartoons", "nursery rhymes", "kids songs", "educational kids", "storytime",
+      "fairy tales", "bedtime stories", "alphabet", "numbers", "colors",
+      "shapes", "animals for kids", "science for kids", "math for kids",
+      "arts and crafts for kids", "kids cooking", "kids experiments",
+      "toy review", "unboxing toys", "lego", "playdoh", "action figures",
+      "dolls", "puzzles for kids", "kids games", "board games for kids",
+      "kids yoga", "kids exercise", "kids dance", "kids music",
+      "animated movies", "pixar", "disney junior", "nick jr", "pbs kids",
+      "superhero kids", "minecraft for kids", "roblox", "kids vlog",
+      "family fun", "amusement park", "zoo visit", "museum visit",
+      "holiday specials", "birthday ideas", "kids party", "school tips for kids",
+      "show and tell", "kids book review", "reading rainbow"
+    ]
+  },
+  {
+    "name": "automotive",
+    "tags": [
+      "car review", "truck review", "suv review", "electric vehicle review",
+      "hybrid cars", "luxury cars", "sports cars", "supercars", "hypercars",
+      "classic cars", "vintage cars", "muscle cars", "off-road vehicles",
+      "motorcycles", "electric motorcycles", "car buying guide", "car maintenance",
+      "car detailing", "car cleaning", "car mods", "car tuning", "racing",
+      "formula 1", "nascar", "drift", "drag racing", "road trips",
+      "road test", "0 to 60", "track day", "car comparison", "best car list",
+      "car technology", "autonomous driving", "ev charging", "car insurance",
+      "car financing", "used car tips", "dealership tips", "car flipping",
+      "engine explained", "transmission", "suspension", "brakes", "tires",
+      "car audio", "dashcam", "gps systems", "tesla", "ford", "toyota"
+    ]
+  },
+  {
+    "name": "gardening & plants",
+    "tags": [
+      "indoor plants", "outdoor gardening", "vegetable garden", "herb garden",
+      "flower garden", "succulent care", "cactus care", "tropical plants",
+      "houseplant care", "plant propagation", "repotting", "soil mix",
+      "fertilizing plants", "watering tips", "plant diseases", "pests control",
+      "hydroponics", "aquaponics", "permaculture", "composting", "worm farming",
+      "raised bed garden", "container gardening", "balcony garden",
+      "greenhouse growing", "vertical garden", "zen garden", "japanese garden",
+      "cottage garden", "native plants", "drought tolerant plants",
+      "seasonal gardening", "spring gardening", "fall gardening",
+      "fruit trees", "berry growing", "citrus trees", "tropical fruit",
+      "bonsai", "orchid care", "fern care", "monstera", "pothos",
+      "snake plant", "peace lily", "fiddle leaf fig", "plant haul",
+      "plant shopping", "rare plants", "plant collection tour"
+    ]
+  },
+  {
+    "name": "books & literature",
+    "tags": [
+      "book review", "book recommendation", "reading vlog", "book haul",
+      "book unboxing", "bookshelf tour", "tbr list", "reading challenge",
+      "classic literature", "contemporary fiction", "literary fiction",
+      "science fiction books", "fantasy books", "mystery books", "thriller books",
+      "romance books", "historical fiction", "non-fiction books", "biography",
+      "memoir", "self help books", "business books", "psychology books",
+      "philosophy books", "poetry", "graphic novels", "comics", "manga books",
+      "young adult", "middle grade", "children's books", "picture books",
+      "audiobooks", "kindle", "ebooks", "book club", "author interview",
+      "writing tips", "creative writing", "storytelling", "world building",
+      "character development", "plot structure", "publishing tips",
+      "book vs movie", "banned books", "award winners", "booker prize",
+      "pulitzer prize", "bestseller list", "indie publishing"
+    ]
+  },
+  {
+    "name": "dance",
+    "tags": [
+      "ballet", "hip hop dance", "contemporary dance", "jazz dance",
+      "tap dance", "ballroom", "salsa", "bachata", "tango", "waltz",
+      "folk dance", "cultural dance", "k-pop dance", "bollywood dance",
+      "afrobeats dance", "breakdancing", "bboying", "popping", "locking",
+      "waacking", "voguing", "house dance", "freestyle", "choreography",
+      "dance tutorial", "learn to dance", "dance challenge", "tiktok dance",
+      "dance cover", "dance competition", "dance audition", "dance performance",
+      "dance recital", "flash mob", "street dance", "club dancing",
+      "wedding dance", "first dance", "dance fitness", "zumba",
+      "dance for beginners", "dance stretching", "dance conditioning",
+      "dance history", "famous choreographers", "dance documentary",
+      "dance theatre", "musical theatre dance", "dance costumes"
+    ]
+  },
+  {
+    "name": "yoga & mindfulness",
+    "tags": [
+      "hatha yoga", "vinyasa yoga", "ashtanga yoga", "kundalini yoga",
+      "yin yoga", "restorative yoga", "bikram yoga", "hot yoga",
+      "yoga for beginners", "yoga for flexibility", "yoga for strength",
+      "yoga for back pain", "yoga for stress", "yoga for sleep",
+      "morning yoga", "evening yoga", "yoga nidra", "pranayama",
+      "breathwork", "meditation for beginners", "guided meditation",
+      "body scan meditation", "loving kindness meditation", "zen meditation",
+      "mantra meditation", "walking meditation", "mindful eating",
+      "mindful parenting", "mindfulness at work", "stress reduction",
+      "anxiety relief", "depression support", "trauma informed yoga",
+      "chair yoga", "senior yoga", "kids yoga", "prenatal yoga",
+      "postnatal yoga", "yoga philosophy", "chakra balancing",
+      "mudras", "bandhas", "yoga retreat", "yoga teacher training",
+      "yoga props", "yoga mat review", "yoga anatomy"
+    ]
+  },
+  {
+    "name": "astrology & occult",
+    "tags": [
+      "zodiac signs", "aries", "taurus", "gemini", "cancer", "leo", "virgo",
+      "libra", "scorpio", "sagittarius", "capricorn", "aquarius", "pisces",
+      "birth chart", "sun sign", "moon sign", "rising sign", "mercury retrograde",
+      "planetary transits", "horoscope", "weekly horoscope", "yearly horoscope",
+      "compatibility", "synastry", "composite chart", "vedic astrology",
+      "western astrology", "chinese astrology", "numerology", "angel numbers",
+      "tarot reading", "oracle cards", "pendulum", "runes", "i ching",
+      "crystals and stones", "crystal healing", "crystal grids", "chakras",
+      "aura reading", "energy cleansing", "smudging", "sage burning",
+      "spell casting", "wicca", "witchcraft", "manifestation", "law of attraction",
+      "moon phases", "new moon ritual", "full moon ritual", "astrology news",
+      "astrology memes", "astrology community", "birth chart reading"
+    ]
+  },
+  {
+    "name": "social media & content creation",
+    "tags": [
+      "youtube tips", "growing on youtube", "youtube algorithm", "thumbnails",
+      "titles and seo", "video editing", "premiere pro", "final cut pro",
+      "davinci resolve", "capcut", "instagram growth", "instagram reels",
+      "tiktok growth", "tiktok strategy", "twitter tips", "x platform",
+      "linkedin tips", "facebook tips", "pinterest strategy", "snapchat",
+      "twitch streaming", "obs setup", "streaming tips", "content strategy",
+      "niche selection", "content calendar", "batch creating", "repurposing content",
+      "monetization", "adsense", "brand deals", "sponsored content",
+      "affiliate marketing", "merchandise", "patreon", "membership",
+      "analytics", "audience growth", "community building", "collab",
+      "podcast creation", "newsletter", "blogging", "personal brand",
+      "creator economy", "influencer tips", "ugc creator", "faceless channel",
+      "vlogging", "video ideas", "creativity tips"
+    ]
+  },
+  {
+    "name": "true crime",
+    "tags": [
+      "murder mystery", "cold case", "unsolved crimes", "serial killer",
+      "criminal profiling", "forensic science", "crime scene investigation",
+      "detective stories", "wrongful conviction", "exoneration",
+      "prison documentary", "criminal psychology", "sociopath", "psychopath",
+      "kidnapping cases", "missing persons", "trafficking awareness",
+      "heist", "robbery", "fraud", "ponzi scheme", "white collar crime",
+      "organized crime", "mafia", "cartel", "gang", "cult",
+      "cult leaders", "documentary true crime", "podcast based crime",
+      "court trial", "crime law", "defense attorney", "prosecutor",
+      "evidence analysis", "dna evidence", "digital forensics",
+      "autopsy explained", "cause of death", "toxicology",
+      "crime timeline", "crime reconstruction", "eyewitness testimony",
+      "victim advocacy", "crime prevention", "neighborhood watch",
+      "crime statistics", "cybercrime", "identity theft"
+    ]
+  },
+  {
+    "name": "real estate",
+    "tags": [
+      "home buying", "first time buyer", "mortgage", "down payment",
+      "real estate investing", "rental property", "house hacking",
+      "airbnb investing", "short term rental", "long term rental",
+      "property management", "landlord tips", "tenant tips", "reits",
+      "commercial real estate", "office space", "retail space",
+      "industrial real estate", "land investing", "flipping houses",
+      "fix and flip", "brrrr method", "wholesaling", "subject to",
+      "creative financing", "seller financing", "hard money loans",
+      "real estate syndication", "crowdfunding real estate",
+      "property valuation", "appraisal", "home inspection",
+      "real estate agent tips", "negotiating a home", "closing costs",
+      "property taxes", "homeowners insurance", "hoa", "zoning laws",
+      "building permits", "renovation", "new construction", "condo vs house",
+      "renting vs buying", "real estate market", "housing market trends",
+      "interest rates effect", "real estate news", "luxury real estate"
+    ]
+  },
+  {
+    "name": "language learning",
+    "tags": [
+      "english learning", "spanish learning", "french learning", "german learning",
+      "japanese learning", "korean learning", "chinese mandarin", "arabic learning",
+      "portuguese learning", "italian learning", "hindi learning", "russian learning",
+      "turkish learning", "dutch learning", "swedish learning", "sign language",
+      "language tips", "vocabulary building", "grammar lessons", "pronunciation",
+      "listening practice", "speaking practice", "reading practice", "writing practice",
+      "duolingo tips", "anki flashcards", "immersion method", "shadowing technique",
+      "comprehensible input", "language exchange", "speaking with natives",
+      "language learning apps", "polyglot tips", "language challenge",
+      "30 day language challenge", "fluency tips", "accent reduction",
+      "dialect", "slang", "idioms", "phrasal verbs", "formal vs informal",
+      "translation tips", "interpretation", "bilingual life", "third language",
+      "heritage language", "language and culture", "etymology"
+    ]
+  },
+  {
+    "name": "mental health awareness",
+    "tags": [
+      "depression", "anxiety disorder", "panic attacks", "ocd", "ptsd",
+      "bipolar disorder", "borderline personality", "schizophrenia",
+      "eating disorders", "anorexia awareness", "bulimia awareness",
+      "binge eating", "body dysmorphia", "addiction recovery", "sobriety",
+      "alcohol awareness", "drug addiction", "gambling addiction",
+      "social media addiction", "therapy types", "cbt explained",
+      "dbt skills", "emdr therapy", "talk therapy", "art therapy",
+      "music therapy", "nature therapy", "peer support", "support groups",
+      "crisis resources", "hotlines", "mental health first aid",
+      "stigma reduction", "mental health advocacy", "lived experience",
+      "recovery stories", "mental health in men", "mental health in women",
+      "mental health in teens", "mental health in elderly",
+      "workplace mental health", "burnout", "compassion fatigue",
+      "caregiver mental health", "trauma informed care", "neurodiversity",
+      "autism awareness", "adhd awareness", "dyslexia", "learning disabilities"
+    ]
+  },
+  {
+    "name": "lifestyle & vlog",
+    "tags": [
+      "day in my life", "week in my life", "morning routine", "night routine",
+      "productive day", "unproductive day", "college vlog", "university life",
+      "study with me", "work with me", "working from home", "remote work life",
+      "digital nomad life", "city living", "suburban life", "rural life",
+      "apartment living", "house living", "minimalist lifestyle", "simple living",
+      "slow living", "cottagecore", "dark academia", "clean girl aesthetic",
+      "that girl lifestyle", "soft life", "sober lifestyle", "vegan lifestyle",
+      "zero waste", "sustainable living", "frugal living", "budget lifestyle",
+      "luxury lifestyle", "solo female lifestyle", "expat life", "immigrant life",
+      "married life", "single life", "motherhood", "fatherhood", "empty nester",
+      "retirement life", "gap year", "sabbatical", "travel lifestyle",
+      "van life", "tiny house life", "cabin life", "beach life"
+    ]
+  },
+  {
+    "name": "environment & sustainability",
+    "tags": [
+      "climate change", "global warming", "carbon footprint", "net zero",
+      "renewable energy", "solar power", "wind energy", "hydropower",
+      "geothermal energy", "nuclear energy debate", "electric vehicles",
+      "sustainable transport", "public transit", "cycling culture",
+      "zero waste living", "plastic free", "upcycling", "composting",
+      "sustainable fashion", "ethical consumption", "veganism for planet",
+      "plant based diet", "food waste reduction", "water conservation",
+      "deforestation", "reforestation", "biodiversity loss", "species extinction",
+      "ocean pollution", "microplastics", "air pollution", "soil degradation",
+      "sustainable agriculture", "organic farming", "regenerative farming",
+      "urban farming", "permaculture", "eco architecture", "green building",
+      "leed certification", "environmental policy", "paris agreement",
+      "carbon trading", "greenwashing", "eco anxiety", "climate activism",
+      "environmental justice", "indigenous land rights"
+    ]
+  },
+  {
+    "name": "food science & nutrition",
+    "tags": [
+      "macronutrients", "micronutrients", "protein science", "carbohydrates",
+      "healthy fats", "omega 3", "vitamins", "minerals", "antioxidants",
+      "gut microbiome", "probiotics", "prebiotics", "fiber benefits",
+      "sugar science", "artificial sweeteners", "food additives", "preservatives",
+      "food labeling", "calorie counting", "glycemic index", "insulin response",
+      "metabolic health", "metabolism explained", "digestion science",
+      "food allergies", "gluten intolerance", "lactose intolerance",
+      "food sensitivities", "elimination diet", "anti-inflammatory diet",
+      "mediterranean diet science", "keto science", "intermittent fasting science",
+      "caloric restriction", "longevity diet", "blue zones diet",
+      "sports nutrition science", "pre-workout nutrition", "post-workout nutrition",
+      "creatine", "protein powder review", "collagen", "superfoods debunked",
+      "processed food", "ultra processed food", "whole foods", "organic vs conventional",
+      "gmo debate", "food industry", "nutrition research"
+    ]
+  },
+  {
+    "name": "architecture & design",
+    "tags": [
+      "modern architecture", "contemporary design", "minimalist architecture",
+      "brutalism", "art deco", "art nouveau", "gothic architecture",
+      "classical architecture", "vernacular architecture", "sustainable architecture",
+      "green building", "passive house", "biophilic design", "urban design",
+      "city planning", "landscape architecture", "interior architecture",
+      "architectural history", "famous architects", "zaha hadid", "frank lloyd wright",
+      "le corbusier", "rem koolhaas", "tadao ando", "bjarke ingels",
+      "building materials", "concrete", "glass and steel", "timber construction",
+      "3d printed buildings", "modular homes", "prefab homes",
+      "adaptive reuse", "historic preservation", "skyscrapers",
+      "bridges", "museums design", "airports design", "stadium design",
+      "school design", "hospital design", "religious architecture",
+      "residential design", "commercial design", "office design",
+      "architectural drawings", "model making", "cad software", "bim",
+      "architectural photography", "virtual tours"
+    ]
+  },
+  {
+    "name": "philosophy & ethics",
+    "tags": [
+      "socrates", "plato", "aristotle", "kant", "hegel", "nietzsche",
+      "descartes", "locke", "hume", "rousseau", "marx", "sartre",
+      "simone de beauvoir", "albert camus", "michel foucault", "chomsky",
+      "stoicism", "epicureanism", "existentialism", "nihilism", "absurdism",
+      "utilitarianism", "deontology", "virtue ethics", "moral relativism",
+      "metaethics", "applied ethics", "bioethics", "environmental ethics",
+      "business ethics", "ai ethics", "philosophy of mind", "consciousness",
+      "free will", "determinism", "epistemology", "metaphysics", "ontology",
+      "logic", "critical thinking", "philosophy of science", "philosophy of religion",
+      "political philosophy", "social contract", "justice theory",
+      "john rawls", "robert nozick", "hannah arendt", "philosophy of language",
+      "aesthetics philosophy", "meaning of life", "death and dying",
+      "philosophy of time", "personal identity", "philosophy of art"
+    ]
+  },
+  {
+    "name": "economy & finance news",
+    "tags": [
+      "economic news", "gdp growth", "inflation", "interest rates", "fed reserve",
+      "central banks", "monetary policy", "fiscal policy", "government budget",
+      "national debt", "trade deficit", "trade war", "tariffs", "sanctions",
+      "supply chain", "globalization", "deglobalization", "reshoring",
+      "labor market", "unemployment", "wages", "cost of living", "housing crisis",
+      "energy prices", "oil and gas", "commodity markets", "gold prices",
+      "bond market", "yield curve", "recession indicators", "economic forecast",
+      "imf world bank", "economic inequality", "wealth gap", "poverty",
+      "minimum wage", "universal basic income", "welfare", "social safety net",
+      "gig economy", "freelance economy", "creator economy", "crypto economy",
+      "fintech disruption", "bank failures", "bailouts", "quantitative easing",
+      "tapering", "emerging markets", "developing economies", "brics"
+    ]
+  },
+  {
+    "name": "meditation & spirituality practice",
+    "tags": [
+      "guided meditation", "sleep meditation", "morning meditation",
+      "walking meditation", "loving kindness", "metta", "vipassana",
+      "transcendental meditation", "zen sitting", "mindfulness meditation",
+      "body scan", "visualization", "chakra meditation", "sound bath",
+      "singing bowls", "binaural beats", "solfeggio frequencies", "432hz",
+      "528hz", "affirmations", "positive affirmations", "subliminal audio",
+      "hypnosis", "self hypnosis", "nlp techniques", "journaling prompts",
+      "shadow work prompts", "inner child healing", "reparenting",
+      "somatic therapy", "nervous system regulation", "vagal tone",
+      "breathwork techniques", "holotropic breathing", "wim hof method",
+      "ice bath meditation", "sensory deprivation", "float tank",
+      "forest bathing", "earthing grounding", "nature sounds", "rain sounds",
+      "white noise", "sleep sounds", "asmr meditation", "retreat experience",
+      "spiritual community", "online sangha", "teacher student relationship"
+    ]
+  },
+  {
+    "name": "weddings & events",
+    "tags": [
+      "wedding planning", "wedding venues", "wedding dress", "bridal gown",
+      "wedding suits", "bridesmaid dresses", "groomsmen attire",
+      "wedding flowers", "wedding decor", "wedding themes", "wedding colors",
+      "wedding cake", "wedding food", "wedding catering", "wedding bar",
+      "wedding photography", "wedding videography", "wedding music",
+      "dj vs band", "wedding vows", "wedding ceremony", "wedding reception",
+      "engagement ring", "proposal ideas", "engagement party",
+      "bachelorette party", "bachelor party", "bridal shower", "rehearsal dinner",
+      "destination wedding", "elopement", "micro wedding", "budget wedding",
+      "luxury wedding", "diy wedding", "multicultural wedding",
+      "wedding timeline", "wedding checklist", "wedding vendor tips",
+      "honeymoon planning", "anniversary ideas", "vow renewal",
+      "birthday party planning", "baby shower", "graduation party",
+      "corporate event", "conference planning", "festival organizing"
+    ]
+  },
+  {
+    "name": "astrology & space",
+    "tags": [
+      "solar system", "planets", "moon", "sun", "stars", "galaxies",
+      "milky way", "black holes", "neutron stars", "supernovae", "nebulae",
+      "dark matter", "dark energy", "big bang theory", "expanding universe",
+      "multiverse theory", "string theory", "quantum gravity", "general relativity",
+      "special relativity", "space telescopes", "hubble telescope", "james webb",
+      "nasa missions", "spacex", "blue origin", "virgin galactic", "isro",
+      "esa missions", "iss", "space station life", "astronaut training",
+      "mars missions", "moon missions", "artemis program", "lunar gateway",
+      "asteroid mining", "space colonization", "terraforming", "exoplanets",
+      "kepler telescope", "seti", "alien life search", "fermi paradox",
+      "drake equation", "ufo reports", "uap", "aurora borealis",
+      "meteor showers", "eclipses", "stargazing tips", "amateur astronomy",
+      "telescope buying guide", "astrophotography tips", "space documentary"
+    ]
+  },
+  {
+    "name": "lgbtq+",
+    "tags": [
+      "coming out stories", "gay life", "lesbian life", "bisexual experience",
+      "transgender journey", "non-binary life", "queer identity", "questioning",
+      "asexual spectrum", "aromantic spectrum", "pansexual", "intersex",
+      "lgbtq+ history", "stonewall", "pride parade", "pride month",
+      "lgbtq+ rights", "marriage equality", "anti-discrimination laws",
+      "lgbtq+ youth", "lgbtq+ seniors", "lgbtq+ family", "lgbtq+ parenting",
+      "same sex parenting", "rainbow family", "lgbtq+ health", "trans health",
+      "gender affirming care", "hormone therapy", "lgbtq+ mental health",
+      "lgbtq+ dating tips", "lgbtq+ relationships", "lgbtq+ culture",
+      "drag culture", "drag race", "ballroom culture", "lgbtq+ media",
+      "lgbtq+ representation", "lgbtq+ books", "lgbtq+ films",
+      "lgbtq+ advocacy", "allyship", "homophobia awareness", "transphobia awareness",
+      "bisexual erasure", "intersectionality", "lgbtq+ community", "safe spaces"
+    ]
+  },
+  {
+    "name": "food & restaurant review",
+    "tags": [
+      "restaurant review", "fine dining review", "street food review",
+      "fast food review", "cafe review", "bakery review", "dessert shop",
+      "food truck", "pop up restaurant", "michelin star", "tasting menu",
+      "chef interview", "kitchen tour", "behind the scenes restaurant",
+      "food photography", "food styling", "food critic", "yelp tips",
+      "google maps review", "tripadvisor", "menu exploration",
+      "price comparison", "value for money", "portion size",
+      "ambiance review", "service review", "wine pairing", "beer pairing",
+      "cocktail review", "mocktail", "barista review", "coffee shop culture",
+      "brunch spots", "late night eats", "hidden gems restaurants",
+      "tourist trap vs local spot", "food hall", "market food",
+      "seasonal menu", "chef specials", "new restaurant opening",
+      "restaurant closing", "food festival", "pop up dining",
+      "celebrity chef restaurant", "cooking competition shows",
+      "master chef", "great british bake off", "food network"
+    ]
+  },
+  {
+    "name": "crafting & maker culture",
+    "tags": [
+      "3d printing", "laser cutting", "cnc routing", "electronics making",
+      "arduino", "raspberry pi", "electronics tutorials", "soldering",
+      "circuit design", "pcb making", "robotics", "drone building",
+      "rc cars", "rc planes", "lego technic", "woodworking shop",
+      "metalworking shop", "welding", "casting and molding", "injection molding",
+      "leatherworking", "shoemaking", "bookbinding", "paper making",
+      "glass blowing", "pottery wheel", "hand building clay", "kiln firing",
+      "textile design", "weaving loom", "spinning fiber", "natural dyeing",
+      "leather tooling", "knife making", "blacksmithing", "forging",
+      "chainmail", "armor making", "prop making", "foam smithing",
+      "cosplay armor", "halloween props", "model making", "scale models",
+      "diorama", "miniature painting", "warhammer", "tabletop gaming",
+      "dungeon master tips", "game design", "board game design", "card game design"
+    ]
+  },
+  {
+    "name": "coffee & beverages",
+    "tags": [
+      "espresso", "latte", "cappuccino", "flat white", "americano",
+      "cold brew", "nitro cold brew", "pour over", "french press",
+      "aeropress", "moka pot", "siphon coffee", "drip coffee",
+      "turkish coffee", "vietnamese coffee", "coffee cupping",
+      "single origin coffee", "coffee blends", "coffee roasting",
+      "home roasting", "coffee grinders", "espresso machine review",
+      "barista skills", "latte art", "coffee shop tour", "third wave coffee",
+      "specialty coffee", "coffee science", "caffeine explained",
+      "decaf coffee", "coffee and health", "green tea", "matcha",
+      "chai tea", "herbal teas", "bubble tea", "boba",
+      "kombucha", "kefir drinks", "fermented beverages", "craft beer",
+      "home brewing beer", "wine making", "cocktail making", "mocktails",
+      "smoothies", "juicing", "protein shakes", "energy drinks",
+      "health drinks", "traditional beverages", "drinks around the world"
+    ]
+  },
+  {
+    "name": "military & history",
+    "tags": [
+      "world war 2 battles", "d-day", "battle of stalingrad", "battle of midway",
+      "pacific theater", "european theater", "north africa campaign",
+      "world war 1 trenches", "western front", "eastern front",
+      "vietnam war battles", "korean war history", "gulf war",
+      "iraq war", "afghanistan war", "civil war battles", "napoleon wars",
+      "roman military", "greek warfare", "medieval warfare", "crusades",
+      "mongolian empire military", "samurai warfare", "ninja history",
+      "cold war military", "nuclear history", "arms race", "spy history",
+      "special forces", "navy seals", "delta force", "sas", "spetsnaz",
+      "military technology", "aircraft carriers", "tanks history",
+      "fighter jets", "stealth technology", "drones military", "cyber warfare",
+      "military strategy", "sun tzu art of war", "military biography",
+      "medal of honor recipients", "war crimes", "geneva convention",
+      "military documentary", "veteran stories", "war memorials"
+    ]
+  },
+  {
+    "name": "volunteering & social impact",
+    "tags": [
+      "volunteering tips", "finding volunteer opportunities", "local volunteering",
+      "international volunteering", "charity work", "nonprofit work",
+      "community service", "food banks", "homeless shelter volunteering",
+      "animal shelter volunteering", "tutoring volunteering", "mentoring",
+      "environmental volunteering", "beach cleanup", "tree planting",
+      "habitat restoration", "disaster relief", "red cross", "doctors without borders",
+      "unicef", "who", "oxfam", "save the children", "world food programme",
+      "social entrepreneurship", "impact investing", "b corporation",
+      "csr corporate social responsibility", "giving back", "fundraising tips",
+      "charity marathon", "charity auction", "online fundraising",
+      "crowdfunding for cause", "social media activism", "hashtag activism",
+      "petition campaigns", "community organizing", "grassroots movement",
+      "advocacy tips", "policy change", "civic engagement", "voting importance",
+      "local government participation", "youth activism", "climate activism",
+      "human rights activism", "prison reform", "justice system reform"
+    ]
+  },
+  {
+    "name": "asmr",
+    "tags": [
+      "asmr triggers", "whisper asmr", "soft spoken asmr", "tapping asmr",
+      "scratching asmr", "crinkling asmr", "page turning asmr",
+      "keyboard typing asmr", "writing sounds asmr", "eating asmr",
+      "drinking asmr", "cooking asmr", "rain asmr", "nature sounds asmr",
+      "fire crackling asmr", "hair brushing asmr", "scalp massage asmr",
+      "face massage asmr", "ear cleaning asmr", "ear massage asmr",
+      "ear blowing asmr", "mouth sounds asmr", "gum chewing asmr",
+      "book reading asmr", "library asmr", "spa asmr", "makeup asmr",
+      "skincare asmr", "hair styling asmr", "doctor roleplay asmr",
+      "shop roleplay asmr", "personal attention asmr", "friend roleplay",
+      "study with me asmr", "sleep asmr", "anxiety relief asmr",
+      "binaural asmr", "3d audio asmr", "lo-fi asmr", "gaming asmr",
+      "art making asmr", "crafting asmr", "japanese asmr", "korean asmr",
+      "asmr for focus", "asmr for insomnia", "asmr for stress relief"
+    ]
+  },
+  {
+    "name": "rural & farm life",
+    "tags": [
+      "homesteading", "off grid living", "self sufficient living",
+      "small farm life", "hobby farm", "backyard chickens", "raising goats",
+      "raising pigs", "cattle farming", "sheep farming", "dairy farming",
+      "beekeeping", "honey production", "farm to table", "growing own food",
+      "seed saving", "heritage breeds", "regenerative farming",
+      "no till farming", "cover crops", "crop rotation", "irrigation",
+      "greenhouse growing", "cold frame", "root cellar", "food preservation",
+      "canning", "fermenting", "pickling", "dehydrating", "freeze drying",
+      "hunting and fishing", "foraging wild plants", "wild mushrooms",
+      "maple syrup making", "cheese making", "butter making", "bread baking",
+      "sourdough from scratch", "slaughtering ethically", "butchering",
+      "firewood cutting", "chainsaw safety", "tractor operation",
+      "farm equipment", "rural community", "country lifestyle",
+      "barn renovation", "farmhouse restoration", "rural vs urban debate"
+    ]
+  }
+]
