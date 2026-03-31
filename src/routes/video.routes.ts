@@ -4,6 +4,7 @@ import verifyJWT, { optionalVerifyJWT } from '../middlewares/auth.middleware';
 import { handleValidationErrorsMiddleware } from '../middlewares/handleValidationErrors.middleware';
 import { upload } from '../middlewares/multer.middleware';
 import { uploadVideoValidator } from '../validators/uploadVideo.validator';
+import { validateFileSizes } from '../middlewares/validateFileSizes.middleware';
 
 const router = Router();
 
@@ -12,6 +13,7 @@ router.route('/upload-video').post(
         { name: 'videoFile', maxCount: 1 },
         { name: 'thumbnail', maxCount: 1 },
     ]),
+    validateFileSizes,
     verifyJWT,
     uploadVideoValidator(),
     handleValidationErrorsMiddleware,
