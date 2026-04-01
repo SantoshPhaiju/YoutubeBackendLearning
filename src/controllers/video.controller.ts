@@ -131,17 +131,18 @@ export const getVideoById = asyncWrapper(
         const pipeline = [
             {
                 $match: {
+                    _id: new mongoose.Types.ObjectId(videoId),
                     $or: [
                         // Show the video if it is public
                         {
-                            _id: new mongoose.Types.ObjectId(videoId),
+                            // _id: new mongoose.Types.ObjectId(videoId),
                             visibility: 'public',
                         },
                         // Show the video if it is private and the user is the owner
                         ...(isLoggedIn
                             ? [
                                   {
-                                      _id: new mongoose.Types.ObjectId(videoId),
+                                      // _id: new mongoose.Types.ObjectId(videoId),
                                       visibility: 'private',
                                       owner: req.user._id,
                                   },

@@ -36,7 +36,7 @@ export const subscribeChannel = asyncWrapper(
             subscriber: req.user._id,
         });
 
-        res.status(201).json(
+        res.status(200).json(
             new ApiResponse(
                 200,
                 'Successfully subscribed to channel',
