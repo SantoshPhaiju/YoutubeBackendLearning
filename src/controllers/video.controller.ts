@@ -232,3 +232,23 @@ export const getHomePageVideos = asyncWrapper(
         );
     }
 )
+
+export const trackVideoViews = asyncWrapper(async (req: Request, res: Response) => {
+    const { videoId } = req.params;
+
+    const video = await Video.findByIdAndUpdate(videoId, {
+        $inc: { viewCount: 1 },
+    }, {
+        new: true,
+    });
+
+    if (!video) {
+        throw new ApiError(404, 'Video not found');
+    }
+
+    res.status(200).json(
+        new ApiResponse(200, 'Video views tracked successfully', {
+            viewCount: video?.viewCount,
+        })
+    );
+});
