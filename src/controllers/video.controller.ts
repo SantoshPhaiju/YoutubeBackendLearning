@@ -201,7 +201,6 @@ export const getVideoById = asyncWrapper(
 
         const video = await Video.aggregate(pipeline);
 
-
         if (!video || video.length === 0) {
             throw new ApiError(404, 'Video not found');
         }
@@ -231,24 +230,60 @@ export const getHomePageVideos = asyncWrapper(
             })
         );
     }
-)
+);
 
-export const trackVideoViews = asyncWrapper(async (req: Request, res: Response) => {
-    const { videoId } = req.params;
+export const trackVideoViews = asyncWrapper(
+    async (req: Request, res: Response) => {
+        const { videoId } = req.params;
 
-    const video = await Video.findByIdAndUpdate(videoId, {
-        $inc: { viewCount: 1 },
-    }, {
-        new: true,
-    });
+        // * This is not the ideal case where we use the things like this which can be passed by multiple api calls right away so what we gonna use is:
 
-    if (!video) {
-        throw new ApiError(404, 'Video not found');
+        /*
+        TODO: Implement secure video view tracking system
+
+        1. When user clicks the video:
+           - Send a POST request to /start-view (protected route)
+           - Backend generates a sessionId for this video view
+           - Store in DB: { userId, videoId, sessionId, createdAt, counted: false }
+
+        2. On frontend:
+           - Start timer based on video duration:
+             - < 60 sec → 15% of duration
+             - ≥ 60 sec → 20 seconds
+           - After timer ends, send POST request to /track-view with sessionId
+
+        3. Backend validation on /track-view:
+           - Check if user is logged in
+           - Verify sessionId exists for userId + videoId
+           - Check if session already counted OR user viewed this video in last X minutes (e.g., 10 min)
+           - If valid, increment video view count and mark session as counted
+           - Else, ignore
+
+        4. Optional improvements:
+           - Use Redis for storing active view sessions for faster checks
+           - Track pause/resume events for more accurate watch time
+           - Add rate limiting / anti-bot measures to prevent fake views
+           - Consider analytics logs for later reporting
+        */
+
+        const video = await Video.findByIdAndUpdate(
+            videoId,
+            {
+                $inc: { viewCount: 1 },
+            },
+            {
+                new: true,
+            }
+        );
+
+        if (!video) {
+            throw new ApiError(404, 'Video not found');
+        }
+
+        res.status(200).json(
+            new ApiResponse(200, 'Video views tracked successfully', {
+                viewCount: video?.viewCount,
+            })
+        );
     }
-
-    res.status(200).json(
-        new ApiResponse(200, 'Video views tracked successfully', {
-            viewCount: video?.viewCount,
-        })
-    );
-});
+);
