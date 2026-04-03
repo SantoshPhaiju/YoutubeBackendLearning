@@ -264,6 +264,10 @@ export const trackVideoViews = asyncWrapper(
            - Track pause/resume events for more accurate watch time
            - Add rate limiting / anti-bot measures to prevent fake views
            - Consider analytics logs for later reporting
+
+
+
+           * And additionally in the frontend what we are gonna do is, track the video playback time by the user, like when user clicks the video it auto plays right and we gonna send an api request to backend like video started and store the time in View model started time, we start the measure the time if user pause the video we stop the time so that we can measure the watch duration by the user, then when the user exists the video or change the video then the endVideo api will be hit and we store the view and backend decides to update the view or not, and also stores the userId/ipAddress to rate limit, like if a user has viewed the video again in the ${certainTimeFrame} let's say 10 minutes then that view will be not count and to prevent from hitting the api multiple times from the same ip address like 30 times in 1 minute in the same video then we will block the ip or do something like that, or we can only block that ip address for that trackViewApi
         */
 
         const video = await Video.findByIdAndUpdate(
