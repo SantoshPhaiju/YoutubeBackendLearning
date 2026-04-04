@@ -38,11 +38,13 @@ import { errorHandlerMiddleware } from './middlewares/errorHandler.middleware';
 import userRouter from './routes/user.routes';
 import subscriptionRouter from './routes/subscription.routes';
 import videoRouter from './routes/video.routes';
+import likeRouter from './routes/like.routes';
 
 // routes declaration
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/subscriptions', subscriptionRouter);
 app.use('/api/v1/videos', videoRouter);
+app.use('/api/v1/likes', likeRouter);
 
 app.use(errorHandlerMiddleware);
 
