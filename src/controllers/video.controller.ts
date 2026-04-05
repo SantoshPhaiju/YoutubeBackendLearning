@@ -69,7 +69,6 @@ export const uploadVideo = asyncWrapper(async (req: Request, res: Response) => {
 export const getVideoById = asyncWrapper(
     async (req: Request, res: Response) => {
         const { videoId } = req.params;
-        // console.log('videoid', videoId);
 
         // Check if the user is logged in
         const isLoggedIn = (req.user && req.user._id) || false;
