@@ -72,6 +72,7 @@ export const getVideoById = asyncWrapper(
 
         // Check if the user is logged in
         const isLoggedIn = (req.user && req.user._id) || false;
+        const userId = req.user?._id || null; // null if not logged in
 
         // const pipeline = [
         //     {
@@ -206,7 +207,7 @@ export const getVideoById = asyncWrapper(
                                 $expr: {
                                     $and: [
                                         { $eq: ['$video', '$$videoId'] },
-                                        { $eq: ['$likedBy', req.user._id] },
+                                        { $eq: ['$likedBy', userId] },
                                         { $eq: ['$type', 'like'] }, // only likes
                                     ],
                                 },
@@ -227,7 +228,7 @@ export const getVideoById = asyncWrapper(
                                 $expr: {
                                     $and: [
                                         { $eq: ['$video', '$$videoId'] },
-                                        { $eq: ['$likedBy', req.user._id] },
+                                        { $eq: ['$likedBy', userId] },
                                         { $eq: ['$type', 'dislike'] }, // only dislikes
                                     ],
                                 },
