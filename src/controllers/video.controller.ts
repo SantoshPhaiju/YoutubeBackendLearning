@@ -197,6 +197,36 @@ export const getVideoById = asyncWrapper(
                     ],
                 },
             },
+            {
+                $lookup: {
+                    from: 'likes',
+                    let: { videoId: '$_id' },
+                    pipeline: [
+                        {
+                            $match: {
+                                $expr: {
+                                    $and: [
+                                        { $eq: ['$video', '$$videoId'] },
+                                        { $eq: ['$likedBy', req.user._id] },
+                                    ],
+                                },
+                            },
+                        },
+                        { $limit: 1 },
+                    ],
+                    as: 'likedData',
+                },
+            },
+            {
+                $addFields: {
+                    isLiked: { $gt: [{ $size: '$likedData' }, 0] },
+                },
+            },
+            {
+                $project: {
+                    likedData: 0,
+                },
+            },
         ];
 
         const video = await Video.aggregate(pipeline);

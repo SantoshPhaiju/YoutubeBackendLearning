@@ -32,11 +32,17 @@ export const toggleLike = asyncWrapper(async (req: Request, res: Response) => {
 
         const updateLikeCount = await Video.findByIdAndUpdate(video._id, {
             $inc: { likeCount: -1 },
+        }, {
+            new: true
         });
 
         if (!updateLikeCount) throw new ApiError(500, 'Something went wrong!');
 
-        res.status(200).json(new ApiResponse(200, 'Unliked the video.', null));
+        res.status(200).json(
+            new ApiResponse(200, 'Unliked the video.', {
+                likeCount: updateLikeCount?.likeCount,
+            })
+        );
         return;
     }
 
@@ -50,9 +56,15 @@ export const toggleLike = asyncWrapper(async (req: Request, res: Response) => {
 
     const updateLikeCount = await Video.findByIdAndUpdate(video._id, {
         $inc: { likeCount: 1 },
+    }, {
+        new: true
     });
 
     if (!updateLikeCount) throw new ApiError(500, 'Something went wrong!');
 
-    res.status(200).json(new ApiResponse(200, 'Liked the video.', null));
+    res.status(200).json(
+        new ApiResponse(200, 'Liked the video.', {
+            likeCount: updateLikeCount?.likeCount,
+        })
+    );
 });
