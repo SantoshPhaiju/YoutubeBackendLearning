@@ -207,6 +207,7 @@ export const getVideoById = asyncWrapper(
                                     $and: [
                                         { $eq: ['$video', '$$videoId'] },
                                         { $eq: ['$likedBy', req.user._id] },
+                                        { $eq: ['$type', 'like'] }, // only likes
                                     ],
                                 },
                             },
@@ -217,13 +218,36 @@ export const getVideoById = asyncWrapper(
                 },
             },
             {
+                $lookup: {
+                    from: 'likes',
+                    let: { videoId: '$_id' },
+                    pipeline: [
+                        {
+                            $match: {
+                                $expr: {
+                                    $and: [
+                                        { $eq: ['$video', '$$videoId'] },
+                                        { $eq: ['$likedBy', req.user._id] },
+                                        { $eq: ['$type', 'dislike'] }, // only dislikes
+                                    ],
+                                },
+                            },
+                        },
+                        { $limit: 1 },
+                    ],
+                    as: 'dislikedData',
+                },
+            },
+            {
                 $addFields: {
                     isLiked: { $gt: [{ $size: '$likedData' }, 0] },
+                    isDisliked: { $gt: [{ $size: '$dislikedData' }, 0] },
                 },
             },
             {
                 $project: {
                     likedData: 0,
+                    dislikedData: 0,
                 },
             },
         ];

@@ -17,10 +17,27 @@ const likeSchema = new Schema(
         likedBy: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
-        }
+        },
+        type: {
+            type: String,
+            enum: ['like', 'dislike'],
+            default: 'like',
+        },
     },
     {
         timestamps: true,
+    }
+);
+
+likeSchema.index(
+    {
+        comment: 1,
+        video: 1,
+        tweet: 1,
+        likedBy: 1,
+    },
+    {
+        unique: true,
     }
 );
 
