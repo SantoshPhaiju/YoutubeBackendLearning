@@ -47,19 +47,32 @@ export const getCommentsOfVideo = asyncWrapper(
         if (!video) {
             throw new ApiError(404, 'Video not found');
         }
-        const comments = await Comment.find({ video: videoId, level: 0 })
+        const comments = await Comment.find({ video: videoId, level: 0, isDeleted: false })
             .lean()
             .populate({
                 path: 'author',
                 select: '-password -createdAt -updatedAt -refreshToken -watchHistory -coverImage',
-            });
+            }).select('-isDeleted');
 
         if (!comments) {
             throw new ApiError(404, 'No comments found for this video');
         }
 
+        const commentsWithRepliesCount = await Promise.all(
+            comments.map(async (comment) => {
+                const totalReplies = await Comment.countDocuments({
+                    rootId: comment._id,
+                    isDeleted: false,
+                });
+                return {
+                    ...comment,
+                    totalReplies,
+                };
+            })
+        );
+
         res.status(200).json(
-            new ApiResponse(200, 'Comments fetched successfully', comments)
+            new ApiResponse(200, 'Comments fetched successfully', commentsWithRepliesCount)
         );
     }
 );
