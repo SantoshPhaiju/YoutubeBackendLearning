@@ -10,6 +10,10 @@ import { handleValidationErrorsMiddleware } from '../middlewares/handleValidatio
 import { upload } from '../middlewares/multer.middleware';
 import { uploadVideoValidator } from '../validators/uploadVideo.validator';
 import { validateFileSizes } from '../middlewares/validateFileSizes.middleware';
+import {
+    addComment,
+    getCommentsOfVideo,
+} from '../controllers/comments.controller';
 
 const router = Router();
 
@@ -28,5 +32,7 @@ router.route('/upload-video').post(
 router.route('/get-home-page-videos').get(getHomePageVideos);
 router.route('/get-video/:videoId').get(optionalVerifyJWT, getVideoById);
 router.route('/track-views/:videoId').patch(trackVideoViews);
+router.route('/:videoId/comment').post(verifyJWT, addComment);
+router.route('/:videoId/comments').get(optionalVerifyJWT, getCommentsOfVideo);
 
 export default router;

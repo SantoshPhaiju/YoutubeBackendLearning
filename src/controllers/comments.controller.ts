@@ -21,15 +21,11 @@ export const addComment = asyncWrapper(async (req: Request, res: Response) => {
         throw new ApiError(400, 'Comment is required');
     }
 
-    console.log("comment: ", comment)
-
-    const newComment = await Comment.create(
-        {
-            content: comment,
-            video: videoId,
-            commentedBy: userId,
-        }
-    );
+    const newComment = await Comment.create({
+        content: comment,
+        video: videoId,
+        author: userId,
+    });
 
     if (!newComment) {
         throw new ApiError(500, 'Something went wrong while adding comment');
@@ -40,15 +36,29 @@ export const addComment = asyncWrapper(async (req: Request, res: Response) => {
     );
 });
 
-export const addReply = asyncWrapper(async (req: Request, res: Response) => {
-    const videoId = req.params.videoId;
-    const commentId = req.params.commentId;
-    if (!videoId) {
-        throw new ApiError(400, 'Video ID is required');
-    }
-    const video = await Video.findById(videoId);
-    if (!video) {
-        throw new ApiError(404, 'Video not found');
-    }
+export const getCommentsOfVideo = asyncWrapper(
+    async (req: Request, res: Response) => {
+        const videoId = req.params.videoId;
+        if (!videoId) {
+            throw new ApiError(400, 'Video ID is required');
+        }
+        const video = await Video.findById(videoId);
+        if (!video) {
+            throw new ApiError(404, 'Video not found');
+        }
+        const comments = await Comment.find({ video: videoId }).lean().populate(
+            {
+                path: 'author',
+                select: '-password -createdAt -updatedAt -refreshToken -watchHistory -coverImage'
+            }
+        );
 
-});
+        if (!comments) {
+            throw new ApiError(404, 'No comments found for this video');
+        }
+
+        res.status(200).json(
+            new ApiResponse(200, 'Comments fetched successfully', comments)
+        );
+    }
+);
