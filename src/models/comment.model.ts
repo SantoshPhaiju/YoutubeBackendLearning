@@ -13,6 +13,12 @@ const commentSchema = new Schema(
             ref: 'Comment',
             default: null,
         },
+        // we need root when nesting deep in the level
+        rootId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Comment',
+            default: null,
+        },
         // replyingToId will be null for root comments and will contain the id of the user who is replying to the parent comment
         replyingToId: {
             type: mongoose.Schema.Types.ObjectId,
