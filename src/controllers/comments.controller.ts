@@ -31,9 +31,17 @@ export const addComment = asyncWrapper(async (req: Request, res: Response) => {
     if (!newComment) {
         throw new ApiError(500, 'Something went wrong while adding comment');
     }
+    const populatedComment = await newComment.populate(
+        'author',
+        '-password -createdAt -updatedAt -refreshToken -watchHistory -coverImage'
+    );
+
+    const commentObj = populatedComment.toObject();
+
+    commentObj.totalReplies = 0;
 
     res.status(201).json(
-        new ApiResponse(201, 'Comment added successfully', newComment)
+        new ApiResponse(201, 'Comment added successfully', commentObj)
     );
 });
 
