@@ -1,6 +1,6 @@
 export const appConfig: {
     port: string | undefined;
-    corsOrigin: string | undefined;
+    corsOrigin: string[] | undefined;
     accessTokenSecret: string | undefined;
     accessTokenExpiry: string | undefined;
     refreshTokenSecret: string | undefined;
@@ -13,8 +13,8 @@ export const appConfig: {
     port: process.env.PORT,
     corsOrigin:
         process.env.NODE_ENV === 'development'
-            ? process.env.CORS_ORIGIN
-            : process.env.PRODUCTION_CORS_ORIGIN,
+            ? process.env.CORS_ORIGIN?.split(',')
+            : process.env.PRODUCTION_CORS_ORIGIN?.split(','),
     accessTokenSecret: process.env.ACCESS_TOKEN_SECRET,
     accessTokenExpiry: process.env.ACCESS_TOKEN_EXPIRY,
     refreshTokenSecret: process.env.REFRESH_TOKEN_SECRET,
