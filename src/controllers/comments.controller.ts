@@ -1,10 +1,10 @@
-import asyncWrapper from '../utils/asyncWrapper';
 import { Request, Response } from 'express';
-import { ApiError } from '../utils/ApiError';
-import { Video } from '../models/video.model';
-import { Comment } from '../models/comment.model';
-import { ApiResponse } from '../utils/ApiResponse';
 import mongoose from 'mongoose';
+import { Comment } from '../models/comment.model';
+import { Video } from '../models/video.model';
+import { ApiError } from '../utils/ApiError';
+import { ApiResponse } from '../utils/ApiResponse';
+import asyncWrapper from '../utils/asyncWrapper';
 
 export const addComment = asyncWrapper(async (req: Request, res: Response) => {
     const videoId = req.params.videoId;
@@ -55,12 +55,17 @@ export const getCommentsOfVideo = asyncWrapper(
         if (!video) {
             throw new ApiError(404, 'Video not found');
         }
-        const comments = await Comment.find({ video: videoId, level: 0, isDeleted: false })
+        const comments = await Comment.find({
+            video: videoId,
+            level: 0,
+            isDeleted: false,
+        })
             .lean()
             .populate({
                 path: 'author',
                 select: '-password -createdAt -updatedAt -refreshToken -watchHistory -coverImage',
-            }).select('-isDeleted');
+            })
+            .select('-isDeleted');
 
         if (!comments) {
             throw new ApiError(404, 'No comments found for this video');
@@ -80,7 +85,11 @@ export const getCommentsOfVideo = asyncWrapper(
         );
 
         res.status(200).json(
-            new ApiResponse(200, 'Comments fetched successfully', commentsWithRepliesCount)
+            new ApiResponse(
+                200,
+                'Comments fetched successfully',
+                commentsWithRepliesCount
+            )
         );
     }
 );
@@ -167,7 +176,30 @@ export const getCommentReplies = asyncWrapper(
 
         interface CommentWithReplies extends FlatComment {
             replies: CommentWithReplies[];
+            totalReplies?: number;
         }
+
+        // Function to count total replies recursively
+        const countTotalReplies = (comment: CommentWithReplies): number => {
+            if (!comment.replies || comment.replies.length === 0) {
+                return 0;
+            }
+            return (
+                comment.replies.length +
+                comment.replies.reduce(
+                    (total, reply) => total + countTotalReplies(reply),
+                    0
+                )
+            );
+        };
+
+        // Function to add totalReplies to all comments recursively
+        const addTotalRepliesToTree = (comment: CommentWithReplies) => {
+            comment.totalReplies = countTotalReplies(comment);
+            if (comment.replies && comment.replies.length > 0) {
+                comment.replies.forEach(addTotalRepliesToTree);
+            }
+        };
 
         // Fetch all replies under this comment (level 1,2,3)
         const replies = (await Comment.find({
@@ -206,6 +238,9 @@ export const getCommentReplies = asyncWrapper(
                 if (parent) parent.replies.push(node);
             }
         });
+
+        // Add totalReplies count to all comments in the tree
+        rootReplies.forEach(addTotalRepliesToTree);
 
         res.status(200).json(
             new ApiResponse(200, 'Replies fetched successfully', rootReplies)
