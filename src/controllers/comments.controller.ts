@@ -145,9 +145,10 @@ export const replyToComment = asyncWrapper(
         if (!reply) {
             throw new ApiError(500, 'Something went wrong while replying');
         }
+        const responseReply = await Comment.findById(reply._id).lean().populate("author", "fullname username avatar _id");
 
         res.status(201).json(
-            new ApiResponse(201, 'Reply added successfully', reply)
+            new ApiResponse(201, 'Reply added successfully', responseReply)
         );
     }
 );

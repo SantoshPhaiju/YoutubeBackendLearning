@@ -2,11 +2,11 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express, { Express } from 'express';
 import { appConfig } from './config/config';
-
 const app: Express = express();
 
 const { corsOrigin } = appConfig;
 console.log("corsOrigin", corsOrigin)
+
 
 app.use(
     cors({
@@ -40,6 +40,7 @@ import subscriptionRouter from './routes/subscription.routes';
 import videoRouter from './routes/video.routes';
 import likeRouter from './routes/like.routes';
 import commentsRouter from './routes/comments.routes';
+
 
 // routes declaration
 app.use('/api/v1/users', userRouter);

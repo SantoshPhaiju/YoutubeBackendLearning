@@ -24,3 +24,4 @@ export const appConfig: {
     cloudinaryCloudName: process.env.CLOUDINARY_CLOUD_NAME,
     cloudinaryUrl: process.env.CLOUDINARY_URL,
 };
+
