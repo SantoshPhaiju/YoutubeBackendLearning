@@ -156,7 +156,6 @@ export const replyToComment = asyncWrapper(
 export const getCommentReplies = asyncWrapper(
     async (req: Request, res: Response) => {
         const commentId = req.params.commentId;
-        console.log(commentId);
 
         const parentComment = await Comment.findById(commentId);
         if (!parentComment) throw new ApiError(404, 'Comment not found');
