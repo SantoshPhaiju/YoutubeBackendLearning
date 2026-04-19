@@ -113,7 +113,6 @@ export const searchSuggestions = asyncWrapper(
             })
                 .limit(10)
                 .select('title viewCount');
-            console.log('videoData', videoData);
 
             const formattedVideos = videoData.map((v) => ({
                 text: v.title,
