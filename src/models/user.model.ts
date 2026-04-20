@@ -74,7 +74,6 @@ userSchema.methods.generateAccessToken = function (): string {
             fullname: this.fullname,
         },
         appConfig.accessTokenSecret!,
-
         {
             expiresIn: '7d',
         }

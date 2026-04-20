@@ -37,6 +37,7 @@ const verifyAndAttachUser = async (token: string) => {
 const verifyJWT = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const token = getTokenFromRequest(req);
+        console.log("access token", token, "");
 
         if (!token) {
             return next(new ApiError(401, 'Unauthorized request'));
