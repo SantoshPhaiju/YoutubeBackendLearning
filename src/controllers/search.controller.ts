@@ -74,7 +74,7 @@ export const searchSuggestions = asyncWrapper(
         const userId = req.user?._id || null;
 
         try {
-            // 1️⃣ Search DB suggestions
+            // Search DB suggestions
             const searchData = await Search.aggregate([
                 {
                     $match: {
@@ -107,7 +107,7 @@ export const searchSuggestions = asyncWrapper(
                 },
             ]);
 
-            // 2️⃣ Video suggestions
+            // Video suggestions
             const videoData = await Video.find({
                 title: { $regex: q, $options: 'i' },
             })
@@ -120,10 +120,10 @@ export const searchSuggestions = asyncWrapper(
                 source: 'video',
             }));
 
-            // 3️⃣ Merge both
+            // Merge both
             const combined = [...searchData, ...formattedVideos];
 
-            // 4️⃣ Deduplicate (important)
+            // Deduplicate (important)
             const map = new Map();
 
             for (const item of combined) {
@@ -140,7 +140,7 @@ export const searchSuggestions = asyncWrapper(
             }
 
 
-            // 5️⃣ Final sorted result
+            // Final sorted result
             const finalSuggestions = Array.from(map.values())
                 .sort((a, b) => b.priority - a.priority)
                 .slice(0, 12)
