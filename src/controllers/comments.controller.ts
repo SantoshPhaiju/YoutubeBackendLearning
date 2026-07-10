@@ -45,7 +45,7 @@ export const addComment = asyncWrapper(async (req: Request, res: Response) => {
     );
 });
 
-export const getCommentsOfVideo = asyncWrapper (
+export const getCommentsOfVideo = asyncWrapper(
     async (req: Request, res: Response) => {
         const videoId = req.params.videoId;
         if (!videoId) {
@@ -94,7 +94,7 @@ export const getCommentsOfVideo = asyncWrapper (
     }
 );
 
-export const replyToComment = asyncWrapper (
+export const replyToComment = asyncWrapper(
     async (req: Request, res: Response) => {
         const commentId = req.params.commentId;
         const userId = req.user._id;
