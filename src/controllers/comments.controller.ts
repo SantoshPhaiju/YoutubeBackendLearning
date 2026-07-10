@@ -45,7 +45,7 @@ export const addComment = asyncWrapper(async (req: Request, res: Response) => {
     );
 });
 
-export const getCommentsOfVideo = asyncWrapper(
+export const getCommentsOfVideo = asyncWrapper (
     async (req: Request, res: Response) => {
         const videoId = req.params.videoId;
         if (!videoId) {
@@ -94,7 +94,7 @@ export const getCommentsOfVideo = asyncWrapper(
     }
 );
 
-export const replyToComment = asyncWrapper(
+export const replyToComment = asyncWrapper (
     async (req: Request, res: Response) => {
         const commentId = req.params.commentId;
         const userId = req.user._id;
@@ -145,7 +145,9 @@ export const replyToComment = asyncWrapper(
         if (!reply) {
             throw new ApiError(500, 'Something went wrong while replying');
         }
-        const responseReply = await Comment.findById(reply._id).lean().populate("author", "fullname username avatar _id");
+        const responseReply = await Comment.findById(reply._id)
+            .lean()
+            .populate('author', 'fullname username avatar _id');
 
         res.status(201).json(
             new ApiResponse(201, 'Reply added successfully', responseReply)
