@@ -8,11 +8,11 @@ export const uploadVideoValidator = () => {
             .withMessage('Title is required')
             .bail()
             .isLength({ min: 3, max: 80 })
-            .withMessage('Username must be between 3 and 80 characters'),
+            .withMessage('Title must be between 3 and 80 characters'),
         body('description')
             .isString()
-            .isLength({ min: 0, max: 2000 })
-            .withMessage('Description must not be more than 2000 characters'),
+            .isLength({ min: 0, max: 10000 })
+            .withMessage('Description must not be more than 10000 characters'),
         body('visibility')
             .notEmpty()
             .withMessage('Visibility should not be empty'),

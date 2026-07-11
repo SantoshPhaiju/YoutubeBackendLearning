@@ -8,11 +8,25 @@ cloudinary.config({
     api_secret: appConfig.cloudinaryApiSecret,
 });
 
+export const getOptimizedVideoUrl = (publicId: string) => {
+    return cloudinary.url(publicId, {
+        resource_type: 'video',
+        secure: true,
+        transformation: [
+            {
+                quality: 'auto',
+                fetch_format: 'auto',
+                video_codec: 'auto',
+            },
+        ],
+    });
+};
+
 export const uploadOnCloudinary = async (
     localFilepath: string
 ): Promise<{
     url: string;
-    reponse: UploadApiResponse;
+    response: UploadApiResponse;
 } | null> => {
     try {
         if (!localFilepath) return null;
@@ -41,7 +55,7 @@ export const uploadOnCloudinary = async (
         fs.unlinkSync(localFilepath); // remove the file from the server after uploading on cloudinary
         return {
             url: response.url,
-            reponse: response,
+            response: response,
         };
     } catch (error) {
         fs.unlinkSync(localFilepath); // remove the file from the server if it fails to upload on cloudinary

@@ -52,9 +52,10 @@ export const uploadVideo = asyncWrapper(async (req: Request, res: Response) => {
         thumbnail: thumbnailCloudinaryUrl,
         videoFile: videoCloudinaryUrl,
         owner: req.user._id,
-        duration: videoCloudinaryResponse.reponse.duration, // todo: get duration of video
+        duration: videoCloudinaryResponse.response.duration,
         categoryId: categoryId,
         tags: tags,
+        videoPublicId: videoCloudinaryResponse.response.public_id,
     });
 
     const uploadedVideo = await video.save();

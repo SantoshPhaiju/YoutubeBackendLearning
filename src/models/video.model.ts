@@ -60,6 +60,10 @@ const videoSchema = new mongoose.Schema(
             enum: ['public', 'private'],
             required: true,
         },
+        videoPublicId: {
+            type: String,
+            required: true,
+        },
     },
     {
         timestamps: true,

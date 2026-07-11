@@ -1,43 +1,64 @@
 import asyncWrapper from '../utils/asyncWrapper';
 
 import { Request, Response } from 'express';
-import { ApiError } from '../utils/ApiError';
+import { Comment } from '../models/comment.model';
 import { Like } from '../models/like.model';
-import { ApiResponse } from '../utils/ApiResponse';
 import { Video } from '../models/video.model';
+import { ApiError } from '../utils/ApiError';
+import { ApiResponse } from '../utils/ApiResponse';
 
 export const toggleLike = asyncWrapper(async (req: Request, res: Response) => {
-    const videoId = req.params.videoId;
-    if (!videoId) {
-        throw new ApiError(400, 'Video ID is required');
+    const videoId = req.params?.videoId;
+    const commentId = req.params?.commentId;
+    let type = 'video';
+
+    if (!videoId && !commentId) {
+        throw new ApiError(400, `Comment ID or Video ID is required!`);
     }
-    const video = await Video.findById(videoId);
-    if (!video) {
-        throw new ApiError(404, 'Video not found');
+
+    if (videoId) type = 'video';
+    if (commentId) type = 'comment';
+
+    let video;
+    let comment;
+
+    if (videoId) {
+        video = await Video.findById(videoId);
+        if (!video) {
+            throw new ApiError(404, 'Video not found');
+        }
     }
+
+    if (commentId) {
+        comment = await Comment.findById(commentId);
+        if (!comment) {
+            throw new ApiError(404, 'Comment not found');
+        }
+    }
+
     const userId = req.user._id;
-    const type = req.body.type;
-    if (!type) {
-        throw new ApiError(400, 'Type is required');
+    const reactionType = req.body.type;
+    if (!reactionType) {
+        throw new ApiError(400, 'Reaction type is required');
     }
-    if (!['like', 'dislike'].includes(type))
+    if (!['like', 'dislike'].includes(reactionType))
         throw new ApiError(400, 'Invalid reaction type');
 
     const like = await Like.findOne({
-        video: videoId,
+        [type]: type === 'video' ? videoId : commentId,
         likedBy: userId,
     });
 
     if (like) {
-        if (like.type === type) {
+        if (like.type === reactionType) {
             const unLike = await like.deleteOne();
             if (!unLike) {
                 throw new ApiError(
                     500,
-                    'Something went wrong while unliking or disliking the video.'
+                    `Something went wrong while unliking or disliking the ${type}.`
                 );
             }
-            if (type === 'like') {
+            if (reactionType === 'like') {
                 const updateLikeCount = await Video.findByIdAndUpdate(
                     video._id,
                     {
@@ -50,7 +71,7 @@ export const toggleLike = asyncWrapper(async (req: Request, res: Response) => {
                 if (!updateLikeCount)
                     throw new ApiError(500, 'Something went wrong!');
                 res.status(200).json(
-                    new ApiResponse(200, 'Unliked the video.', {
+                    new ApiResponse(200, `Unliked the ${type}.`, {
                         likeCount: updateLikeCount?.likeCount,
                     })
                 );
@@ -68,7 +89,7 @@ export const toggleLike = asyncWrapper(async (req: Request, res: Response) => {
                     throw new ApiError(500, 'Something went wrong!');
                 }
                 res.status(200).json(
-                    new ApiResponse(200, 'Removed dislike the video.', {
+                    new ApiResponse(200, `Removed dislike the ${type}.`, {
                         likeCount: dislikeCount?.dislikeCount,
                     })
                 );
@@ -76,7 +97,7 @@ export const toggleLike = asyncWrapper(async (req: Request, res: Response) => {
             return;
         } else {
             const changeReaction = await Like.findByIdAndUpdate(like._id, {
-                type: type,
+                type: reactionType,
             });
             if (!changeReaction) {
                 throw new ApiError(500, 'Something went wrong!');
@@ -96,7 +117,7 @@ export const toggleLike = asyncWrapper(async (req: Request, res: Response) => {
                     throw new ApiError(500, 'Something went wrong!');
                 }
                 res.status(200).json(
-                    new ApiResponse(200, 'Disliked the video.', {
+                    new ApiResponse(200, `Disliked the ${type}.`, {
                         likeCount: updateDislikeCount?.likeCount,
                     })
                 );
@@ -111,7 +132,7 @@ export const toggleLike = asyncWrapper(async (req: Request, res: Response) => {
                     }
                 );
                 res.status(200).json(
-                    new ApiResponse(200, 'Liked the video.', {
+                    new ApiResponse(200, `Liked the ${type}.`, {
                         likeCount: updateLikeCount?.likeCount,
                     })
                 );
@@ -121,14 +142,14 @@ export const toggleLike = asyncWrapper(async (req: Request, res: Response) => {
     }
 
     const newLike = await Like.create({
-        video: videoId,
+        [type]: type === 'video' ? videoId : commentId,
         likedBy: userId,
-        type: type,
+        type: reactionType,
     });
 
     if (!newLike) throw new ApiError(500, 'Something went wrong.');
 
-    if (type === 'like') {
+    if (reactionType === 'like') {
         const updateLikeCount = await Video.findByIdAndUpdate(
             video._id,
             {
@@ -141,7 +162,7 @@ export const toggleLike = asyncWrapper(async (req: Request, res: Response) => {
 
         if (!updateLikeCount) throw new ApiError(500, 'Something went wrong!');
         res.status(200).json(
-            new ApiResponse(200, 'Liked the video.', {
+            new ApiResponse(200, `Liked the ${type}.`, {
                 likeCount: updateLikeCount?.likeCount,
             })
         );
@@ -159,7 +180,7 @@ export const toggleLike = asyncWrapper(async (req: Request, res: Response) => {
         if (!updatedDislikeCount)
             throw new ApiError(500, 'Something went wrong!');
         res.status(200).json(
-            new ApiResponse(200, 'Disliked the video.', {
+            new ApiResponse(200, `Disliked the ${type}.`, {
                 likeCount: updatedDislikeCount?.likeCount,
             })
         );
