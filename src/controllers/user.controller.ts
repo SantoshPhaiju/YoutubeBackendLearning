@@ -128,7 +128,6 @@ export const loginUser = asyncWrapper(async (req: Request, res: Response) => {
 
     const { usernameoremail, password } = req.body;
 
-
     let user;
 
     if (!password) {
@@ -168,7 +167,7 @@ export const loginUser = asyncWrapper(async (req: Request, res: Response) => {
     const userDetails = {
         username: loggedInUser.username,
         email: loggedInUser.email,
-    }
+    };
 
     res.status(200)
         .cookie('accessToken', accessToken, options)
@@ -587,6 +586,11 @@ export const getUserChannelProfile = asyncWrapper(
                                           ]
                                         : []), // No private videos if not logged in
                                 ],
+                            },
+                        },
+                        {
+                            $sort: {
+                                createdAt: -1, // newest first
                             },
                         },
                         {

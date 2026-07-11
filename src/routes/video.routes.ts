@@ -1,5 +1,9 @@
 import { Router } from 'express';
 import {
+    addComment,
+    getCommentsOfVideo,
+} from '../controllers/comments.controller';
+import {
     getHomePageVideos,
     getVideoById,
     trackVideoViews,
@@ -8,12 +12,8 @@ import {
 import verifyJWT, { optionalVerifyJWT } from '../middlewares/auth.middleware';
 import { handleValidationErrorsMiddleware } from '../middlewares/handleValidationErrors.middleware';
 import { upload } from '../middlewares/multer.middleware';
-import { uploadVideoValidator } from '../validators/uploadVideo.validator';
 import { validateFileSizes } from '../middlewares/validateFileSizes.middleware';
-import {
-    addComment,
-    getCommentsOfVideo,
-} from '../controllers/comments.controller';
+import { uploadVideoValidator } from '../validators/uploadVideo.validator';
 
 const router = Router();
 
