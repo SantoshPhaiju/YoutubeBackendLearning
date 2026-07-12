@@ -48,6 +48,7 @@ export const toggleLike = asyncWrapper(async (req: Request, res: Response) => {
         [type]: type === 'video' ? videoId : commentId,
         likedBy: userId,
     });
+    const model = type === 'video' ? Video : Comment;
 
     if (like) {
         if (like.type === reactionType) {
@@ -59,8 +60,8 @@ export const toggleLike = asyncWrapper(async (req: Request, res: Response) => {
                 );
             }
             if (reactionType === 'like') {
-                const updateLikeCount = await Video.findByIdAndUpdate(
-                    video._id,
+                const updateLikeCount = await model.findByIdAndUpdate(
+                    type === 'video' ? video._id : comment._id,
                     {
                         $inc: { likeCount: -1 },
                     },
@@ -76,8 +77,8 @@ export const toggleLike = asyncWrapper(async (req: Request, res: Response) => {
                     })
                 );
             } else {
-                const dislikeCount = await Video.findByIdAndUpdate(
-                    video._id,
+                const dislikeCount = await model.findByIdAndUpdate(
+                    type === 'video' ? video._id : comment._id,
                     {
                         $inc: { dislikeCount: -1 },
                     },
@@ -103,8 +104,8 @@ export const toggleLike = asyncWrapper(async (req: Request, res: Response) => {
                 throw new ApiError(500, 'Something went wrong!');
             }
             if (like.type === 'like') {
-                const updateDislikeCount = await Video.findByIdAndUpdate(
-                    videoId,
+                const updateDislikeCount = await model.findByIdAndUpdate(
+                    type === 'video' ? video._id : comment._id,
                     {
                         $inc: { likeCount: -1, dislikeCount: 1 },
                     },
@@ -122,8 +123,8 @@ export const toggleLike = asyncWrapper(async (req: Request, res: Response) => {
                     })
                 );
             } else {
-                const updateLikeCount = await Video.findByIdAndUpdate(
-                    videoId,
+                const updateLikeCount = await model.findByIdAndUpdate(
+                    type === 'video' ? video._id : comment._id,
                     {
                         $inc: { dislikeCount: -1, likeCount: 1 },
                     },
@@ -150,8 +151,8 @@ export const toggleLike = asyncWrapper(async (req: Request, res: Response) => {
     if (!newLike) throw new ApiError(500, 'Something went wrong.');
 
     if (reactionType === 'like') {
-        const updateLikeCount = await Video.findByIdAndUpdate(
-            video._id,
+        const updateLikeCount = await model.findByIdAndUpdate(
+            type === 'video' ? video._id : comment._id,
             {
                 $inc: { likeCount: 1 },
             },
@@ -167,8 +168,8 @@ export const toggleLike = asyncWrapper(async (req: Request, res: Response) => {
             })
         );
     } else {
-        const updatedDislikeCount = await Video.findByIdAndUpdate(
-            video._id,
+        const updatedDislikeCount = await model.findByIdAndUpdate(
+            type === 'video' ? video._id : comment._id,
             {
                 $inc: { dislikeCount: 1 },
             },

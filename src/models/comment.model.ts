@@ -36,6 +36,10 @@ const commentSchema = new Schema(
             type: Number,
             default: 0,
         },
+        dislikeCount: {
+            type: Number,
+            default: 0,
+        },
         isDeleted: { type: Boolean, default: false },
     },
     {

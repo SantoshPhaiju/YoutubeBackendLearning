@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import { Comment } from '../models/comment.model';
+import { Like } from '../models/like.model';
 import { Video } from '../models/video.model';
 import { ApiError } from '../utils/ApiError';
 import { ApiResponse } from '../utils/ApiResponse';
@@ -48,6 +49,7 @@ export const addComment = asyncWrapper(async (req: Request, res: Response) => {
 export const getCommentsOfVideo = asyncWrapper(
     async (req: Request, res: Response) => {
         const videoId = req.params.videoId;
+        const userId = req.user._id;
         if (!videoId) {
             throw new ApiError(400, 'Video ID is required');
         }
@@ -77,9 +79,26 @@ export const getCommentsOfVideo = asyncWrapper(
                     rootId: comment._id,
                     isDeleted: false,
                 });
+
+                const isLiked = Boolean(
+                    await Like.exists({
+                        comment: comment._id,
+                        likedBy: userId,
+                        type: 'like',
+                    })
+                );
+                const isDisliked = Boolean(
+                    await Like.exists({
+                        comment: comment._id,
+                        likedBy: userId,
+                        type: 'dislike',
+                    })
+                );
                 return {
                     ...comment,
                     totalReplies,
+                    isLiked,
+                    isDisliked,
                 };
             })
         );
