@@ -49,7 +49,7 @@ export const addComment = asyncWrapper(async (req: Request, res: Response) => {
 export const getCommentsOfVideo = asyncWrapper(
     async (req: Request, res: Response) => {
         const videoId = req.params.videoId;
-        const userId = req.user._id;
+        const userId = req.user?._id || null;
         if (!videoId) {
             throw new ApiError(400, 'Video ID is required');
         }
