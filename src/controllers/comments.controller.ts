@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import { Comment } from '../models/comment.model';
-import { Like } from '../models/like.model';
 import { Video } from '../models/video.model';
 import { ApiError } from '../utils/ApiError';
 import { ApiResponse } from '../utils/ApiResponse';
 import asyncWrapper from '../utils/asyncWrapper';
+import { getReactionMap } from '../utils/getReactionMap';
 
 export const addComment = asyncWrapper(async (req: Request, res: Response) => {
     const videoId = req.params.videoId;
@@ -73,6 +73,11 @@ export const getCommentsOfVideo = asyncWrapper(
             throw new ApiError(404, 'No comments found for this video');
         }
 
+        const commentIds = comments.map(
+            (comment) => new mongoose.Types.ObjectId(comment._id as string)
+        );
+        const reactionMap = await getReactionMap(commentIds, userId);
+
         const commentsWithRepliesCount = await Promise.all(
             comments.map(async (comment) => {
                 const totalReplies = await Comment.countDocuments({
@@ -80,25 +85,13 @@ export const getCommentsOfVideo = asyncWrapper(
                     isDeleted: false,
                 });
 
-                const isLiked = Boolean(
-                    await Like.exists({
-                        comment: comment._id,
-                        likedBy: userId,
-                        type: 'like',
-                    })
-                );
-                const isDisliked = Boolean(
-                    await Like.exists({
-                        comment: comment._id,
-                        likedBy: userId,
-                        type: 'dislike',
-                    })
-                );
+                const reaction = reactionMap.get(String(comment._id));
+
                 return {
                     ...comment,
                     totalReplies,
-                    isLiked,
-                    isDisliked,
+                    isLiked: reaction === 'like',
+                    isDisliked: reaction === 'dislike',
                 };
             })
         );
@@ -193,6 +186,8 @@ export const getCommentReplies = asyncWrapper(
             level: number;
             isDeleted: boolean;
             likeCount: number;
+            isLiked?: boolean;
+            isDisliked?: boolean;
         }
 
         interface CommentWithReplies extends FlatComment {
@@ -246,9 +241,29 @@ export const getCommentReplies = asyncWrapper(
         );
 
         const rootReplies: CommentWithReplies[] = [];
+        const commentIds = replies.map((reply) => reply._id);
 
-        replies.forEach((r) => {
+        // const likedComments = new Set(
+        //     userLikes
+        //         .filter((l) => l.type === 'like')
+        //         .map((l) => l.comment.toString())
+        // );
+
+        // const dislikedComments = new Set(
+        //     userLikes
+        //         .filter((l) => l.type === 'dislike')
+        //         .map((l) => l.comment.toString())
+        // );
+        const reactionMap = await getReactionMap(commentIds, req.user?._id);
+
+        replies.forEach(async (r) => {
+            const reaction = reactionMap.get(r._id.toString());
             const node = map.get(r._id.toString())!;
+            const isLiked = reaction === 'like';
+            const isDisliked = reaction === 'dislike';
+
+            node.isLiked = isLiked;
+            node.isDisliked = isDisliked;
             if (
                 !r.parentId ||
                 r.parentId.toString() === parentComment._id.toString()
