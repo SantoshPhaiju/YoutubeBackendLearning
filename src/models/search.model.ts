@@ -14,10 +14,12 @@ const searchSchema = new mongoose.Schema(
             default: 1,
         },
 
-        userId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User',
-        },
+        searchedBy: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'User',
+            },
+        ],
 
         lastSearched: {
             type: Date,

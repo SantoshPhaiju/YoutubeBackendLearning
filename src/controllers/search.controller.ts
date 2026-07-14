@@ -176,7 +176,7 @@ export const searchSuggestions = asyncWrapper(
             }
 
             try {
-                const history = await Search.find({ userId })
+                const history = await Search.find({ searchedBy: userId })
                     .sort({ lastSearched: -1 })
                     .limit(20)
                     .select('query lastSearched');
@@ -209,7 +209,9 @@ export const searchSuggestions = asyncWrapper(
         try {
             // Fetch user's past queries for isHistory check
             const userHistory = userId
-                ? await Search.find({ userId }).select('query').lean()
+                ? await Search.find({ searchedBy: userId })
+                      .select('query')
+                      .lean()
                 : [];
 
             const userHistorySet = new Set(
@@ -227,16 +229,7 @@ export const searchSuggestions = asyncWrapper(
                     $addFields: {
                         source: 'search',
                         priority: {
-                            $add: [
-                                '$count',
-                                {
-                                    $cond: [
-                                        { $eq: ['$userId', userId] },
-                                        1000,
-                                        0,
-                                    ],
-                                },
-                            ],
+                            $add: ['$count'],
                         },
                     },
                 },
@@ -248,6 +241,8 @@ export const searchSuggestions = asyncWrapper(
                     },
                 },
             ]);
+
+            console.log('searchedData', searchData);
 
             // Video suggestions
             const videoData = await Video.find({
@@ -281,6 +276,8 @@ export const searchSuggestions = asyncWrapper(
                 }
             }
 
+            console.log('map', map);
+
             // Final sorted result with isHistory flag
             const finalSuggestions = Array.from(map.values())
                 .sort((a, b) => b.priority - a.priority)
@@ -288,7 +285,11 @@ export const searchSuggestions = asyncWrapper(
                 .map((i) => ({
                     query: i.text,
                     isHistory: userHistorySet.has(i.text.toLowerCase()),
+                    // priority: i.priority,
+                    source: i.source,
                 }));
+
+            console.log('finalSuggestions', finalSuggestions);
 
             res.status(200).json(
                 new ApiResponse(
@@ -314,23 +315,51 @@ export const saveSuggestion = asyncWrapper(
         }
 
         const userId = req?.user?._id || null;
-
         const normalized = query.toLowerCase().trim();
 
-        const existingQuery = await Search.findOne({ query: normalized });
+        // const existingQuery = await Search.findOne({
+        //     query: normalized,
+        // });
 
-        if (existingQuery) {
-            existingQuery.count += 1;
-            existingQuery.lastSearched = new Date();
-            await existingQuery.save();
-        } else {
-            await Search.create({
+        // if (existingQuery) {
+        //     existingQuery.count += 1;
+        //     existingQuery.lastSearched = new Date();
+        //     if (userId && !existingQuery.searchedBy.includes(userId)) {
+        //         existingQuery.searchedBy.push(userId);
+        //     }
+        //     await existingQuery.save();
+        // } else {
+        //     await Search.create({
+        //         query: normalized,
+        //         searchedBy: userId ? [userId] : [],
+        //         count: 1,
+        //         lastSearched: new Date(),
+        //     });
+        // }
+
+        await Search.findOneAndUpdate(
+            {
                 query: normalized,
-                userId: userId,
-                count: 1,
-                lastSearched: new Date(),
-            });
-        }
+            },
+            {
+                $inc: {
+                    count: 1,
+                },
+                $set: {
+                    lastSearched: new Date(),
+                },
+                ...(userId && {
+                    $addToSet: {
+                        searchedBy: userId,
+                    },
+                }),
+            },
+            {
+                upsert: true,
+                new: true,
+                setDefaultsOnInsert: true,
+            }
+        );
 
         res.status(200).json(
             new ApiResponse(200, 'Suggestion saved successfully', null)
