@@ -18,12 +18,12 @@ export const subscribeChannel = asyncWrapper(
         });
 
         if (existingSubscription) {
-            const subscription = await Subscription.findByIdAndDelete(existingSubscription._id);
-            res.status(200).json(new ApiResponse(
-                200,
-                "Channel unsubscribed successfully",
-                null
-            ));
+            const subscription = await Subscription.findByIdAndDelete(
+                existingSubscription._id
+            );
+            res.status(200).json(
+                new ApiResponse(200, 'Channel unsubscribed successfully', null)
+            );
             return;
             // throw new ApiError(
             //     400,
@@ -43,5 +43,17 @@ export const subscribeChannel = asyncWrapper(
                 subscription
             )
         );
+    }
+);
+
+export const getSubscribedChannels = asyncWrapper(
+    async (req: Request, res: Response) => {
+        try {
+        } catch (error) {
+            console.error(error);
+            res.status(500).json(
+                new ApiResponse(500, 'Internal server error', null)
+            );
+        }
     }
 );
