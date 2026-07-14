@@ -242,8 +242,6 @@ export const searchSuggestions = asyncWrapper(
                 },
             ]);
 
-            console.log('searchedData', searchData);
-
             // Video suggestions
             const videoData = await Video.find({
                 title: { $regex: q, $options: 'i' },
@@ -276,8 +274,6 @@ export const searchSuggestions = asyncWrapper(
                 }
             }
 
-            console.log('map', map);
-
             // Final sorted result with isHistory flag
             const finalSuggestions = Array.from(map.values())
                 .sort((a, b) => b.priority - a.priority)
@@ -288,8 +284,6 @@ export const searchSuggestions = asyncWrapper(
                     // priority: i.priority,
                     source: i.source,
                 }));
-
-            console.log('finalSuggestions', finalSuggestions);
 
             res.status(200).json(
                 new ApiResponse(
