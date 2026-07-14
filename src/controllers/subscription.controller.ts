@@ -49,6 +49,19 @@ export const subscribeChannel = asyncWrapper(
 export const getSubscribedChannels = asyncWrapper(
     async (req: Request, res: Response) => {
         try {
+            const subscriptions = await Subscription.find({
+                subscriber: req.user._id,
+            })
+                .populate('channel', 'fullname email avatar username')
+                .select('-subscriber -createdAt -updatedAt -__v -_id');
+
+            res.status(200).json(
+                new ApiResponse(
+                    200,
+                    'Subscribed channels retrieved successfully',
+                    subscriptions
+                )
+            );
         } catch (error) {
             console.error(error);
             res.status(500).json(
