@@ -14,7 +14,7 @@ const playlistSchema = new Schema(
             {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'Video',
-            }
+            },
         ],
         owner: {
             type: mongoose.Schema.Types.ObjectId,
@@ -24,7 +24,7 @@ const playlistSchema = new Schema(
             type: String,
             enum: ['public', 'private'],
             default: 'public',
-        }
+        },
     },
     {
         timestamps: true,

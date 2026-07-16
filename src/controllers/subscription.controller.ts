@@ -8,13 +8,13 @@ export const subscribeChannel = asyncWrapper(
     async (req: Request, res: Response) => {
         const { channel_id } = req.params;
 
-        if (req.user._id.toString() === channel_id) {
+        if (req.user?._id.toString() === channel_id) {
             throw new ApiError(400, 'You cannot subscribe to yourself');
         }
 
         const existingSubscription = await Subscription.findOne({
             channel: channel_id,
-            subscriber: req.user._id,
+            subscriber: req.user?._id,
         });
 
         if (existingSubscription) {
@@ -33,7 +33,7 @@ export const subscribeChannel = asyncWrapper(
 
         const subscription = await Subscription.create({
             channel: channel_id,
-            subscriber: req.user._id,
+            subscriber: req.user?._id,
         });
 
         res.status(200).json(
@@ -53,7 +53,8 @@ export const getSubscribedChannels = asyncWrapper(
                 subscriber: req.user._id,
             })
                 .populate('channel', 'fullname email avatar username')
-                .select('-subscriber -createdAt -updatedAt -__v -_id');
+                .select('-subscriber -createdAt -updatedAt -__v -_id')
+                .sort({ createdAt: -1 });
 
             res.status(200).json(
                 new ApiResponse(

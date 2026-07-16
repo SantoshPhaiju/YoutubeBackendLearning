@@ -661,7 +661,7 @@ export const getWatchHistoryOfUser = asyncWrapper(
         const user = await User.aggregate([
             {
                 $match: {
-                    _id: new mongoose.Types.ObjectId(req.user._id),
+                    _id: new mongoose.Types.ObjectId(req.user?._id),
                 },
             },
             {
@@ -712,5 +712,46 @@ export const getWatchHistoryOfUser = asyncWrapper(
                 user[0].watchHistory
             )
         );
+    }
+);
+
+export const saveUserWatchHistory = asyncWrapper(
+    async (req: Request, res: Response) => {
+        try {
+            const { videoId } = req.body;
+            const userId = req.user._id;
+            if (!userId) {
+                throw new ApiError(401, 'Unauthorized: User not logged in');
+            }
+
+            if (!videoId) {
+                throw new ApiError(400, 'Video ID is required');
+            }
+
+            const user = await User.findById(userId);
+            if (!user) {
+                throw new ApiError(404, 'User not found');
+            }
+
+            // Check if the video is already in the watch history then remove it and add it to the top of the list
+            const existingIndex = user.watchHistory.findIndex(
+                (id: any) => id.toString() === videoId
+            );
+            if (existingIndex !== -1) {
+                user.watchHistory.splice(existingIndex, 1);
+            }
+
+            user.watchHistory.unshift(videoId);
+            await user.save();
+
+            res.status(200).json(
+                new ApiResponse(200, 'Watch history updated successfully', null)
+            );
+        } catch (error) {
+            console.error(error);
+            res.status(500).json(
+                new ApiResponse(500, 'Internal server error', null)
+            );
+        }
     }
 );
