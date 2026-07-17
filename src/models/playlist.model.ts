@@ -12,8 +12,18 @@ const playlistSchema = new Schema(
         },
         videos: [
             {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'Video',
+                video: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: 'Video',
+                },
+                sequence: {
+                    type: Number,
+                    default: 0,
+                },
+                addedAt: {
+                    type: Date,
+                    default: Date.now,
+                },
             },
         ],
         owner: {
@@ -24,6 +34,15 @@ const playlistSchema = new Schema(
             type: String,
             enum: ['public', 'private'],
             default: 'public',
+        },
+        type: {
+            type: String,
+            enum: ['playlist', 'watchlater', 'likedvideos'],
+            default: 'playlist',
+        },
+        isSystem: {
+            type: Boolean,
+            default: false,
         },
     },
     {
