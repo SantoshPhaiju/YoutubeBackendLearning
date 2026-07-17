@@ -50,4 +50,14 @@ const playlistSchema = new Schema(
     }
 );
 
+playlistSchema.index(
+    {
+        owner: 1,
+        type: 1,
+    },
+    {
+        unique: true,
+    }
+);
+
 export const Playlist = mongoose.model('Playlist', playlistSchema);
