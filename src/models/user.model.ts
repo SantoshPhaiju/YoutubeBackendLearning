@@ -86,7 +86,6 @@ userSchema.methods.generateRefreshToken = function (): string {
             id: this._id,
         },
         appConfig.refreshTokenSecret!,
-
         {
             expiresIn: '30d',
         }
